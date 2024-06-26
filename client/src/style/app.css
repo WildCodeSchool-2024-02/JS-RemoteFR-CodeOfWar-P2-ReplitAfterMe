@@ -1,9 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Vast+Shadow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* références couleurs */
+
+  --primary-color: #ffbb33;
+  --secondary-color: ;
+  --white-color: #e5e2e2;
+  --dark-color: #0d0c0c;
+  --red-color: #8b0000;
+
+  /* font */
+  --primary-font: "Cinzel Decorative", sans-serif;
+  --primary-font-weight-regular: 400;
+  /*font-paragraphe*/
+
+  --primary-font-weight-bold: 700;
+  /*font button jouer*/
+
+  --secondary-font: "Vast Shadow", cursive;
+  /* font-title  */
+  --thirty-font: "raleway", sans-serif;
+  /*font-paragraphe*/
+}
+
+p {
+  font-family: var(--thirty-font);
+  margin-top: 1rem;
+}
+
 h1 {
-  color: red;
+  font-family: var(--secondary-font);
+  color: var(--dark-color);
+}
+body {
+  background-color: var(--primary-color);
 }
