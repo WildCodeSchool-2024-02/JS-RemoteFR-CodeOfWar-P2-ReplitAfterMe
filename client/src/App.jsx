@@ -1,5 +1,11 @@
+import Welcome from "./components/Welcome";
+
 function App() {
-  return <h1>Geo Quest</h1>;
+  return (
+    <main>
+      <Welcome />
+    </main>
+  );
 }
 
 export default App;
