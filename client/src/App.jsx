@@ -1,5 +1,11 @@
+import Quizz from "./components/Quizz";
+
 function App() {
-  return <h1>Geo Quest</h1>;
+  return (
+    <main>
+      <Quizz />
+    </main>
+  );
 }
 
 export default App;
