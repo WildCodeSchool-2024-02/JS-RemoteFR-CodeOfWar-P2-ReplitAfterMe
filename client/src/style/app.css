@@ -29,16 +29,3 @@
   --thirty-font: "raleway", sans-serif;
   /*font-paragraphe*/
 }
-
-p {
-  font-family: var(--thirty-font);
-  margin-top: 1rem;
-}
-
-h1 {
-  font-family: var(--secondary-font);
-  color: var(--dark-color);
-}
-body {
-  background-color: var(--primary-color);
-}
