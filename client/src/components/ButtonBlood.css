@@ -1,0 +1,59 @@
+body {
+  background: rgb(240, 178, 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.animation-button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.button {
+  padding: 40px 110px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: grey;
+  box-shadow: 2px 5px 8px 3px #6b6969;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.button:active {
+  transform: translateY(20px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.animation-image {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.answers-class1 {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.answers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.answers > * {
+  flex: 1;
+  margin: 10px;
+}
