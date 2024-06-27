@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "../style/story.css";
+
 import story from "../data/story";
 
 function Story() {
@@ -7,15 +9,19 @@ function Story() {
   const nextStory = () => {
     setIndex((prevIndex) => prevIndex + 1);
   };
-  console.info(index);
-  console.info(story.intro[parseInt(index, 10)].text);
+
+  if (parseInt(index, 10) < story.intro.length - 1) {
+    nextStory();
+  }
+
   return (
-    <>
-      <p>{story.intro[parseInt(index, 10)].text}</p>
-      <button type="button" onClick={nextStory}>
-        next
-      </button>
-    </>
+    <main onClick={nextStory} aria-hidden="true">
+      {parseInt(index, 10) === story.intro.length - 1 ? (
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">retour menu</a>
+      ) : (
+        <p>{story.intro[parseInt(index, 10)].text}</p>
+      )}
+    </main>
   );
 }
 
