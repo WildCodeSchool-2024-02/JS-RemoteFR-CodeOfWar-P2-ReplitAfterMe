@@ -8,8 +8,7 @@ body {
   background-color: aquamarine;
 }
 
-main {
-  background-color: yellow;
+.storySection {
   display: flex;
   flex-direction: row-reverse;
 }
