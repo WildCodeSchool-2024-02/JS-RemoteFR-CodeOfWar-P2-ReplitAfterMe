@@ -6,14 +6,15 @@ import story from "../data/story";
 
 function Story() {
   const [index, setIndex] = useState(0);
+
   const nextStory = () => {
-    setIndex((prevIndex) => prevIndex + 1);
+    setIndex((prevIndex) => {
+      if (prevIndex < story.intro.length - 1) {
+        return prevIndex + 1;
+      }
+      return prevIndex;
+    });
   };
-
-  if (parseInt(index, 10) < story.intro.length - 1) {
-    nextStory();
-  }
-
   return (
     <main onClick={nextStory} aria-hidden="true">
       {parseInt(index, 10) === story.intro.length - 1 ? (
