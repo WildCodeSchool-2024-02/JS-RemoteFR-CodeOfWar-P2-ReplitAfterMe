@@ -38,7 +38,3 @@ export default function Quizz() {
     </>
   );
 }
-
-// Quizz.propTypes = {
-//   data: PropTypes.shape,
-// };
