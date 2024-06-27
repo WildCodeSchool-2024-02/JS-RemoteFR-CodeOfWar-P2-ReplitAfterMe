@@ -1,5 +1,7 @@
+import HomePage from "./components/HomePage";
+
 function App() {
-  return <h1>Geo Quest</h1>;
+  return <HomePage />;
 }
 
 export default App;
