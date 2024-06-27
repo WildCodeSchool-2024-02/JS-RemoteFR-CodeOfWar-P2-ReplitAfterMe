@@ -1,14 +1,15 @@
+import Quizz from "./components/Quizz";
+import HomePage from "./components/HomePage";
 import ClickEffect from "./components/ClickEffect";
 
-function App() {
-  const handleAnswerClick = (answer) => {
-    console.info(`Réponse cliquée: ${answer}`);
-  };
 
+function App() {
   return (
-    <div className="App">
+    <main>
+      <Quizz />
+      <HomePage />
       <ClickEffect handleAnswerClick={handleAnswerClick} />
-    </div>
+    </main>
   );
 }
 
