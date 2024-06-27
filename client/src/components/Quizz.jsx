@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import PropTypes from "prop-types";
 
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
