@@ -1,0 +1,55 @@
+body {
+  background-color: #ffbb33;
+  overflow: hidden;
+  background: url(../assets/images/plane.png) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: white;
+}
+
+.TitleHome {
+  height: 40vh;
+}
+
+.TitleHome,
+.Links {
+  color: #0d0c0c;
+  text-align: center;
+  list-style: none;
+}
+.TitleHome > h1 {
+  font-size: 72px;
+}
+
+.LinksContainer {
+  list-style: none;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+.Links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #0d0c0c;
+  text-decoration: none;
+}
+
+.Play {
+  font-size: 72px;
+  font-weight: bold;
+  display: block;
+  margin-top: 7rem;
+}
+
+.LinksHome {
+  font-size: 48px;
+}
+
+ul > .Option > li {
+  margin: 4rem 0rem;
+}
