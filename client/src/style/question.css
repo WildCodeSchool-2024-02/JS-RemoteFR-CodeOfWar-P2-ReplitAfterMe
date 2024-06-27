@@ -1,0 +1,9 @@
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question > img {
+  width: 400px;
+}

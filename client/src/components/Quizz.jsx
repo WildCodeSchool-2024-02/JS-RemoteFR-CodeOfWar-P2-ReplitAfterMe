@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
@@ -28,7 +29,7 @@ export default function Quizz() {
     <>
       <header className="header">
         <img src={avatar} alt="avatar de profil" />
-        <button type="button">0 PTS</button>
+        <button type="button">5000 pts</button>
       </header>
       {data.length === 0 ? " " : <Question data={data} />}
       <footer className="Footer">
