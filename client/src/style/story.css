@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aquamarine;
+}
+
+main {
+  background-color: yellow;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+p {
+  width: 32ch;
+  background-color: beige;
+  margin: 2rem;
+  padding: 1rem;
+}

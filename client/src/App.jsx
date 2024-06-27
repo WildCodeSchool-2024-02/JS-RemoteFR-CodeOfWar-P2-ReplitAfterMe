@@ -1,3 +1,4 @@
+import Story from "./components/Story";
 import Quizz from "./components/Quizz";
 import HomePage from "./components/HomePage";
 import ClickEffect from "./components/ClickEffect";
@@ -9,6 +10,8 @@ function App() {
 
   return (
     <main>
+      <h1>Geo Quest</h1>;
+      <Story />
       <Quizz />
       <HomePage />
       <ClickEffect handleAnswerClick={handleAnswerClick} />
