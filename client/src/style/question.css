@@ -7,3 +7,8 @@
 .question > img {
   width: 400px;
 }
+
+.question > p,
+.chapitre > p {
+  background-color: var(--white-color);
+}

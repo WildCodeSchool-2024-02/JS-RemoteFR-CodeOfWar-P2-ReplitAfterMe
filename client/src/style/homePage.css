@@ -3,12 +3,14 @@ body {
   /* overflow: hidden; */
   background: url(../assets/images/plane.png) no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position-x: center;
+  background-position-y: +5rem;
   background-color: white;
 }
 
 .TitleHome {
-  height: 40vh;
+  background-color: #ffbb33;
+  /* height: 40vh; */
 }
 
 .TitleHome,
@@ -26,6 +28,7 @@ body {
   height: 60vh;
   display: flex;
   justify-content: center;
+  margin-top: 25vh;
 }
 .Links {
   display: flex;
