@@ -4,8 +4,10 @@ import HomePage from "./components/HomePage";
 function App() {
   return (
     <main>
-      <Quizz />
       <HomePage />
+      <section>
+        <Quizz />
+      </section>
     </main>
   );
 }

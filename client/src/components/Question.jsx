@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 
+import "../style/question.css";
+
 export default function Question({ data }) {
   return (
     <>
       <div className="question">
-        <img src={data.flags.svg} alt="" />
+        <img src={data.flags.svg} alt={data.flags.alt} />
         <p>À quel pays appartient ce drapeau ?</p>
       </div>
       <div className="chapitre">
@@ -18,6 +20,7 @@ Question.propTypes = {
   data: PropTypes.shape({
     flags: PropTypes.shape({
       svg: PropTypes.string,
+      alt: PropTypes.string,
     }),
   }).isRequired,
 };

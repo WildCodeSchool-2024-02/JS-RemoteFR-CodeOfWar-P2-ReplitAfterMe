@@ -1,6 +1,6 @@
 body {
   background-color: #ffbb33;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: url(../assets/images/plane.png) no-repeat;
   background-size: cover;
   background-position: center;
