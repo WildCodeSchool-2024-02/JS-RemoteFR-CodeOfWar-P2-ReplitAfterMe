@@ -11,10 +11,12 @@ function App() {
   return (
     <main>
       <h1>Geo Quest</h1>;
-      <Story />
-      <Quizz />
       <HomePage />
-      <ClickEffect handleAnswerClick={handleAnswerClick} />
+      <Story />
+      <section>
+        <Quizz />
+        <ClickEffect handleAnswerClick={handleAnswerClick} />
+      </section>
     </main>
   );
 }

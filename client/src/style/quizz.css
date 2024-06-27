@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header > button {
+  width: 79px;
+  height: 25px;
+  border-radius: 8px;
+  background-color: var(--dark-color);
+  color: var(--white-color);
+  font-size: 13px;
+}
