@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import "./ButtonBlood.css";
+import "../style/buttonBlood.css";
 
 export default function AnimationButton() {
   const [showImage, setShowImage] = useState(false);

@@ -5,6 +5,7 @@ import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
+import ClickEffect from "./ClickEffect";
 
 export default function Quizz() {
   const [data, setData] = useState([]);
@@ -25,6 +26,10 @@ export default function Quizz() {
     countryData();
   }, []);
 
+  const handleAnswerClick = (answer) => {
+    console.info(`Réponse cliquée: ${answer}`);
+  };
+
   return (
     <>
       <header className="header">
@@ -32,7 +37,8 @@ export default function Quizz() {
         <button type="button">5000 pts</button>
       </header>
       {data.length === 0 ? " " : <Question data={data} />}
-      <footer className="Footer">
+      <ClickEffect handleAnswerClick={handleAnswerClick} />
+      <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
     </>
