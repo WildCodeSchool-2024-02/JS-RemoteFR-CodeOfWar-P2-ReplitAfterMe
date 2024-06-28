@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import "../style/buttonBlood.css";
 
-export default function AnimationButton() {
+export default function AnimationButton({ dataName }) {
   const [showImage, setShowImage] = useState(false);
 
   const handleClick = () => {
@@ -15,7 +16,7 @@ export default function AnimationButton() {
   return (
     <div className="animation-button">
       <button className="button" type="button" onClick={handleClick}>
-        Click Me
+        {dataName}
       </button>
       {showImage && (
         <motion.img
@@ -31,3 +32,7 @@ export default function AnimationButton() {
     </div>
   );
 }
+
+AnimationButton.propTypes = {
+  dataName: PropTypes.arrayOf(PropTypes.string).isRequired,
+};

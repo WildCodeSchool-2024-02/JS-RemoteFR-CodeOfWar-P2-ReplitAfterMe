@@ -6,7 +6,7 @@ export default function Question({ data }) {
   return (
     <>
       <div className="question">
-        <img src={data.flags.svg} alt={data.flags.alt} />
+        <img src={data[0].flags.svg} alt={data[0].flags.alt} />
         <p>À quel pays appartient ce drapeau ?</p>
       </div>
       <div className="chapitre">

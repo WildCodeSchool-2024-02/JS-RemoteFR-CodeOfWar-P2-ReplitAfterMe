@@ -5,11 +5,12 @@ import HomePage from "./components/HomePage";
 function App() {
   return (
     <main>
+      <h1>Geo Quest</h1>;
       <HomePage />
-      <section className="sectionQuizz">
+      <Story />
+      <section>
         <Quizz />
       </section>
-      <Story />
     </main>
   );
 }

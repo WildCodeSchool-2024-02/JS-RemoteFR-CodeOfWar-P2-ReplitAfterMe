@@ -1,33 +1,21 @@
 import PropTypes from "prop-types";
 import AnimationButton from "./AnimationButton";
 
-export default function ClickEffect({ handleAnswerClick }) {
+export default function ClickEffect({ dataName }) {
   return (
     <div className="answers-class1">
       <div className="answers">
-        <AnimationButton
-          label="Réponse 1"
-          onClick={() => handleAnswerClick("Réponse 1")}
-        />
-        <AnimationButton
-          label="Réponse 2"
-          onClick={() => handleAnswerClick("Réponse 2")}
-        />
+        <AnimationButton dataName={dataName[0]} label="Réponse 1" />
+        <AnimationButton dataName={dataName[1]} label="Réponse 2" />
       </div>
       <div className="answers">
-        <AnimationButton
-          label="Réponse 3"
-          onClick={() => handleAnswerClick("Réponse 3")}
-        />
-        <AnimationButton
-          label="Réponse 4"
-          onClick={() => handleAnswerClick("Réponse 4")}
-        />
+        <AnimationButton dataName={dataName[2]} label="Réponse 3" />
+        <AnimationButton dataName={dataName[3]} label="Réponse 4" />
       </div>
     </div>
   );
 }
 
 ClickEffect.propTypes = {
-  handleAnswerClick: PropTypes.func.isRequired,
+  dataName: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
