@@ -27,6 +27,30 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1.5);
 }
 
+.greenButton {
+  background-color: greenyellow;
+  padding: 20px 55px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 5px 8px 3px #6b6969;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.redButton {
+  padding: 20px 55px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: red;
+  box-shadow: 2px 5px 8px 3px #6b6969;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
 .animation-image {
   position: absolute;
   top: 20%;

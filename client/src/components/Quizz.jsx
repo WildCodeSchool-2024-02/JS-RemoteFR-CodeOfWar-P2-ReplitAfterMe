@@ -24,20 +24,21 @@ function Quizz() {
   };
 
   const dataName = data.map((d) => d.name.common);
+  const dataFlags = data.map((d) => d.flags.svg);
 
   console.info(dataName);
   useEffect(() => {
     countryData();
   }, []);
 
-  console.info(data);
+  console.info(dataFlags);
   return (
     <>
       <header className="header">
         <img src={avatar} alt="avatar de profil" />
         <button type="button">5000 pts</button>
       </header>
-      <Question data={data} />
+      <Question dataFlags={dataFlags} />
       <ClickEffect dataName={dataName} />
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
