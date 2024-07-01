@@ -9,16 +9,17 @@ import ClickEffect from "./ClickEffect";
 
 export default function Quizz() {
   const [data, setData] = useState([]);
+  const number = Math.floor(Math.random(0, data.length) * data.length);
 
   const countryData = () => {
     // Send the request
     axios
       .get(
-        "https://restcountries.com/v3.1/name/france?fields=flags,capital,languages,name,"
+        "https://restcountries.com/v3.1/region/europe?fields=flags,name,cca3"
       )
       // Use this data to update the state
       .then((response) => {
-        setData(response.data[0]);
+        setData(response.data);
       });
   };
 
@@ -36,7 +37,7 @@ export default function Quizz() {
         <img src={avatar} alt="avatar de profil" />
         <button type="button">5000 pts</button>
       </header>
-      {data.length === 0 ? " " : <Question data={data} />}
+      {data.length === 0 ? " " : <Question data={data} number={number} />}
       <ClickEffect handleAnswerClick={handleAnswerClick} />
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />

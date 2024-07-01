@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 
 import "../style/question.css";
 
-export default function Question({ data }) {
+export default function Question({ data, number }) {
   return (
     <>
       <div className="question">
-        <img src={data.flags.svg} alt={data.flags.alt} />
+        <img src={data[number].flags.svg} alt={data[number].alt} />
         <p>À quel pays appartient ce drapeau ?</p>
       </div>
       <div className="chapitre">
@@ -17,10 +17,11 @@ export default function Question({ data }) {
 }
 
 Question.propTypes = {
-  data: PropTypes.shape({
+  data: PropTypes.objectOf({
     flags: PropTypes.shape({
       svg: PropTypes.string,
       alt: PropTypes.string,
     }),
   }).isRequired,
+  number: PropTypes.number.isRequired,
 };
