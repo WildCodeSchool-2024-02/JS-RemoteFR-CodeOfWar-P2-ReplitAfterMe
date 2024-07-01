@@ -9,6 +9,7 @@ import ClickEffect from "./ClickEffect";
 
 function Quizz() {
   const [data, setData] = useState([]);
+  const [points, setPoints] = useState(0);
 
   const countryData = () => {
     // Send the request
@@ -25,7 +26,7 @@ function Quizz() {
 
   const dataName = data.map((d) => d.name.common);
   const dataFlags = data.map((d) => d.flags.svg);
-
+  const goodAnswer = dataName[0];
   console.info(dataName);
   useEffect(() => {
     countryData();
@@ -36,10 +37,15 @@ function Quizz() {
     <>
       <header className="header">
         <img src={avatar} alt="avatar de profil" />
-        <button type="button">5000 pts</button>
+        <button type="button">{points} pts</button>
       </header>
-      <Question dataFlags={dataFlags} />
-      <ClickEffect dataName={dataName} />
+      <Question dataFlags={dataFlags} goodAnswer={goodAnswer} />
+      <ClickEffect
+        dataName={dataName}
+        goodAnswer={goodAnswer}
+        setPoints={setPoints}
+        points={points}
+      />
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
