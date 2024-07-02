@@ -1,27 +1,41 @@
 import PropTypes from "prop-types";
 import AnimationButton from "./AnimationButton";
 
-export default function ClickEffect({ handleAnswerClick }) {
+export default function ClickEffect({
+  dataName,
+  goodAnswer,
+  setPoints,
+  points,
+}) {
+  console.info(goodAnswer);
   return (
     <div className="answers-class1">
       <div className="answers">
         <AnimationButton
-          label="Réponse 1"
-          onClick={() => handleAnswerClick("Réponse 1")}
+          dataName={dataName[0]}
+          goodAnswer={goodAnswer}
+          setPoints={setPoints}
+          points={points}
         />
         <AnimationButton
-          label="Réponse 2"
-          onClick={() => handleAnswerClick("Réponse 2")}
+          dataName={dataName[1]}
+          goodAnswer={goodAnswer}
+          setPoints={setPoints}
+          points={points}
         />
       </div>
       <div className="answers">
         <AnimationButton
-          label="Réponse 3"
-          onClick={() => handleAnswerClick("Réponse 3")}
+          dataName={dataName[2]}
+          goodAnswer={goodAnswer}
+          setPoints={setPoints}
+          points={points}
         />
         <AnimationButton
-          label="Réponse 4"
-          onClick={() => handleAnswerClick("Réponse 4")}
+          dataName={dataName[3]}
+          goodAnswer={goodAnswer}
+          setPoints={setPoints}
+          points={points}
         />
       </div>
     </div>
@@ -29,5 +43,8 @@ export default function ClickEffect({ handleAnswerClick }) {
 }
 
 ClickEffect.propTypes = {
-  handleAnswerClick: PropTypes.func.isRequired,
+  dataName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  goodAnswer: PropTypes.string.isRequired,
+  setPoints: PropTypes.func.isRequired,
+  points: PropTypes.number.isRequired,
 };
