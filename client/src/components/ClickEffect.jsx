@@ -7,7 +7,6 @@ export default function ClickEffect({
   setPoints,
   points,
 }) {
-  console.info(goodAnswer);
   return (
     <div className="answers-class1">
       <div className="answers">

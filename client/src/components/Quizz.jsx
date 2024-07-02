@@ -9,7 +9,7 @@ import ClickEffect from "./ClickEffect";
 
 function Quizz() {
   const [data, setData] = useState([]);
-  const number = Math.floor(Math.random(0, data.length) * data.length);
+
   const [points, setPoints] = useState(0);
 
   const countryData = () => {
@@ -24,15 +24,29 @@ function Quizz() {
       });
   };
 
+  console.info(data);
+
+  const number = Math.floor(Math.random(0, data.length) * data.length);
   const dataName = data.map((d) => d.name.common);
   const dataFlags = data.map((d) => d.flags.svg);
-  const goodAnswer = dataName[0];
-  console.info(dataName);
+
+  const answerArray = [];
+  for (let i = 0; i < 4; i += 1) {
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const selectedItem = data.splice(randomIndex, 1)[0];
+    console.info(selectedItem);
+    answerArray.push(selectedItem);
+  }
+  console.info(answerArray);
+
+  const goodAnswer = answerArray[Math.floor(Math.random() * 4)];
+
+  console.info(goodAnswer);
+
   useEffect(() => {
     countryData();
   }, []);
 
-  console.info(dataFlags);
   return (
     <>
       <header className="header">
