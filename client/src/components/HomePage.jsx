@@ -9,7 +9,7 @@ function HomePage() {
       <div className="LinksContainer">
         <ul className="Links">
           <li>
-            <a href="Play" className="Play">
+            <a href="quizz" className="Play">
               Jouer
             </a>
           </li>
