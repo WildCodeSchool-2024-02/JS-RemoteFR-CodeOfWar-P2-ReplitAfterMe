@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "../style/homePage.css";
 
 function HomePage() {
@@ -9,9 +11,9 @@ function HomePage() {
       <div className="LinksContainer">
         <ul className="Links">
           <li>
-            <a href="Play" className="Play">
-              Jouer
-            </a>
+            <Link to="/quizz" className="Play">
+              JOUER
+            </Link>
           </li>
           <div className="Option">
             <li>
