@@ -7,9 +7,10 @@ import atout from "../assets/images/atout.png";
 import Question from "./Question";
 import ClickEffect from "./ClickEffect";
 
-export default function Quizz() {
+function Quizz() {
   const [data, setData] = useState([]);
   const number = Math.floor(Math.random(0, data.length) * data.length);
+  const [points, setPoints] = useState(0);
 
   const countryData = () => {
     // Send the request
@@ -23,25 +24,43 @@ export default function Quizz() {
       });
   };
 
+  const dataName = data.map((d) => d.name.common);
+  const dataFlags = data.map((d) => d.flags.svg);
+  const goodAnswer = dataName[0];
+  console.info(dataName);
   useEffect(() => {
     countryData();
   }, []);
 
-  const handleAnswerClick = (answer) => {
-    console.info(`Réponse cliquée: ${answer}`);
-  };
-
+  console.info(dataFlags);
   return (
     <>
       <header className="header">
         <img src={avatar} alt="avatar de profil" />
-        <button type="button">5000 pts</button>
+        <button type="button">{points} pts</button>
       </header>
-      {data.length === 0 ? " " : <Question data={data} number={number} />}
-      <ClickEffect handleAnswerClick={handleAnswerClick} />
+      {data.length === 0 ? (
+        " "
+      ) : (
+        <Question
+          dataFlags={dataFlags}
+          goodAnswer={goodAnswer}
+          data={data}
+          number={number}
+        />
+      )}
+      <ClickEffect
+        dataName={dataName}
+        goodAnswer={goodAnswer}
+        setPoints={setPoints}
+        points={points}
+      />
+
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
     </>
   );
 }
+
+export default Quizz;
