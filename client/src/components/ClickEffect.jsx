@@ -6,6 +6,7 @@ export default function ClickEffect({
   goodAnswer,
   setPoints,
   points,
+  setQuestion,
 }) {
   return (
     <AnimationButton
@@ -13,6 +14,7 @@ export default function ClickEffect({
       goodAnswer={goodAnswer}
       setPoints={setPoints}
       points={points}
+      setQuestion={setQuestion}
     />
   );
 }
@@ -22,4 +24,5 @@ ClickEffect.propTypes = {
   goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
+  setQuestion: PropTypes.func.isRequired,
 };

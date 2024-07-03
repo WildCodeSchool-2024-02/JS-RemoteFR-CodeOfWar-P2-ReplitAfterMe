@@ -8,6 +8,9 @@ export default function AnimationButton({
   goodAnswer,
   setPoints,
   points,
+  setQuestion,
+  setNumQuestion,
+  numQuestion,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
@@ -19,14 +22,17 @@ export default function AnimationButton({
     }, 1000);
     if (dataName === goodAnswer) {
       setClassName("greenButton");
+      setPoints(points + 1000);
+      setTimeout(() => {
+        setQuestion();
+        setNumQuestion(numQuestion + 1);
+      }, 2000);
     } else {
       setClassName("redButton");
-    }
-    setTimeout(() => setClassName("button"), 1000);
-    if (dataName === goodAnswer) {
-      setPoints(points + 1000);
-    } else {
-      setPoints(points + 0);
+      setTimeout(() => {
+        setQuestion();
+        setNumQuestion(numQuestion + 1);
+      }, 2000);
     }
   };
 
@@ -55,4 +61,7 @@ AnimationButton.propTypes = {
   goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
+  setQuestion: PropTypes.func.isRequired,
+  setNumQuestion: PropTypes.func.isRequired,
+  numQuestion: PropTypes.number.isRequired,
 };
