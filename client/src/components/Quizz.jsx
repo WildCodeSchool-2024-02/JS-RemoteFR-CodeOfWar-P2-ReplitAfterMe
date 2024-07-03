@@ -11,7 +11,8 @@ function Quizz() {
   const [points, setPoints] = useState(0);
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
-  const [numQuestion, setNumQuestion] = useState(1);
+  const [numQuestion, setNumQuestion] = useState(0);
+  const maxQuestions = 10;
 
   const data = useLoaderData();
 
@@ -29,12 +30,10 @@ function Quizz() {
   }, [data]);
 
   useEffect(() => {
-    if (data.length > 0) {
-      setQuestion();
-    }
-  }, [data, setQuestion]);
+    setQuestion();
+  }, [setQuestion]);
 
-  if (numQuestion >= 11) {
+  if (numQuestion >= maxQuestions) {
     return (
       <div>
         Vous avez obtenu : {points} points
@@ -43,6 +42,10 @@ function Quizz() {
         </Link>
       </div>
     );
+  }
+
+  if (!goodAnswer) {
+    return "";
   }
 
   return (
@@ -58,6 +61,7 @@ function Quizz() {
         dataFlags={goodAnswer.flags.svg}
         dataAlt={goodAnswer.flags.alt}
         numQuestion={numQuestion}
+        maxQuestions={maxQuestions}
       />
 
       {answerArray.map((country) => (
