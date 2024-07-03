@@ -19,7 +19,7 @@ export default function ClickEffect({
 
 ClickEffect.propTypes = {
   dataName: PropTypes.string.isRequired,
-  goodAnswer: PropTypes.number.isRequired,
+  goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
 };

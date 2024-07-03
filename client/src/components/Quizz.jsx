@@ -12,28 +12,20 @@ function Quizz() {
 
   const data = useLoaderData();
 
-  console.info(data);
-
   // load new array with 4 answers
   const answerArray = [];
   for (let i = 0; i < 4; i += 1) {
     const randomIndex = Math.floor(Math.random() * data.length);
     const selectedItem = data.splice(randomIndex, 1)[0];
-    console.info(selectedItem);
     answerArray.push(selectedItem);
   }
-  console.info(answerArray);
+
   // replace number
-  const goodAnswer = Math.floor(Math.random() * 4);
+  const goodAnswer =
+    answerArray[Math.floor(Math.random() * answerArray.length)];
 
-  console.info(goodAnswer);
-
-  // answerArray with only name or flag
+  // answerArray with only name
   const dataName = answerArray.map((answer) => answer.name.common);
-  console.info(dataName);
-  const dataFlags = answerArray.map((answer) => answer.flags.svg);
-  console.info(dataFlags);
-  const dataAlt = answerArray.map((answer) => answer.flags.alt);
 
   return (
     <>
@@ -43,15 +35,15 @@ function Quizz() {
       </header>
 
       <Question
-        dataFlags={dataFlags[goodAnswer]}
-        dataAlt={dataAlt[goodAnswer]}
+        dataFlags={goodAnswer.flags.svg}
+        dataAlt={goodAnswer.flags.alt}
       />
 
       {dataName.map((country) => (
         <ClickEffect
           key={country}
           dataName={country}
-          goodAnswer={goodAnswer}
+          goodAnswer={goodAnswer.name.common}
           setPoints={setPoints}
           points={points}
         />

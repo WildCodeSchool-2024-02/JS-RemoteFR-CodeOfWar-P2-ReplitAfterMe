@@ -23,7 +23,7 @@ export default function AnimationButton({
       setClassName("redButton");
     }
     setTimeout(() => setClassName("button"), 1000);
-    if (dataName.indexOf(dataName) === goodAnswer) {
+    if (dataName === goodAnswer) {
       setPoints(points + 1000);
     } else {
       setPoints(points + 0);
@@ -52,7 +52,7 @@ export default function AnimationButton({
 
 AnimationButton.propTypes = {
   dataName: PropTypes.string.isRequired,
-  goodAnswer: PropTypes.number.isRequired,
+  goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
 };
