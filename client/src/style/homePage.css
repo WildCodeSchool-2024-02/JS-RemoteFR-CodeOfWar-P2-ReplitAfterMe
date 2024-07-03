@@ -8,29 +8,29 @@ body {
   background-color: white;
 }
 
-.TitleHome {
+.titleHome {
   background-color: #ffbb33;
   /* height: 40vh; */
 }
 
-.TitleHome,
-.Links {
+.titleHome,
+.links {
   color: #0d0c0c;
   text-align: center;
   list-style: none;
 }
-.TitleHome > h1 {
+.titleHome > h1 {
   font-size: 72px;
 }
 
-.LinksContainer {
+.linksContainer {
   list-style: none;
   height: 60vh;
   display: flex;
   justify-content: center;
   margin-top: 25vh;
 }
-.Links {
+.links {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -42,17 +42,17 @@ a {
   text-decoration: none;
 }
 
-.Play {
+.play {
   font-size: 72px;
   font-weight: bold;
   display: block;
   margin-top: 7rem;
 }
 
-.LinksHome {
+.linksHome {
   font-size: 48px;
 }
 
-ul > .Option > li {
+ul > .option > li {
   margin: 4rem 0rem;
 }
