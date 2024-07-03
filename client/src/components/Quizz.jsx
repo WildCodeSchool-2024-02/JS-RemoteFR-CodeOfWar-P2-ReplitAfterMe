@@ -1,31 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
-import ClickEffect from "./ClickEffect";
+import AnimationButton from "./AnimationButton";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
+  const [answerArray, setAnswerArray] = useState([]);
+  const [goodAnswer, setGoodAnswer] = useState(null);
 
   const data = useLoaderData();
 
-  // load new array with 4 answers
-  const answerArray = [];
-  for (let i = 0; i < 4; i += 1) {
-    const randomIndex = Math.floor(Math.random() * data.length);
-    const selectedItem = data.splice(randomIndex, 1)[0];
-    answerArray.push(selectedItem);
-  }
+  const setQuestion = useCallback(() => {
+    const nextAnswerArray = [];
+    for (let i = 0; i < 4; i += 1) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const selectedItem = data.splice(randomIndex, 1)[0];
+      nextAnswerArray.push(selectedItem);
+    }
+    console.info(nextAnswerArray);
+    const nextGoodAnswer =
+      nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
+    setAnswerArray(nextAnswerArray);
+    setGoodAnswer(nextGoodAnswer);
+  }, [data]);
 
-  // replace number
-  const goodAnswer =
-    answerArray[Math.floor(Math.random() * answerArray.length)];
+  useEffect(() => {
+    setQuestion();
+  }, [setQuestion]);
 
-  // answerArray with only name
-  const dataName = answerArray.map((answer) => answer.name.common);
+  if (!goodAnswer)
+    return (
+      <div>
+        vous avez obtenu :{points} points
+        <Link to="/story">
+          <button type="button">histoire</button>
+        </Link>
+      </div>
+    );
 
   return (
     <>
@@ -41,13 +56,14 @@ function Quizz() {
         dataAlt={goodAnswer.flags.alt}
       />
 
-      {dataName.map((country) => (
-        <ClickEffect
-          key={country}
-          dataName={country}
+      {answerArray.map((country) => (
+        <AnimationButton
+          key={country.name.common}
+          dataName={country.name.common}
           goodAnswer={goodAnswer.name.common}
           setPoints={setPoints}
           points={points}
+          setQuestion={setQuestion}
         />
       ))}
 
