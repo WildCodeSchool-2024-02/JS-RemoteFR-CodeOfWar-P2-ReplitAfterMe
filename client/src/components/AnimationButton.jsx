@@ -1,21 +1,39 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import "../style/buttonBlood.css";
 
-export default function AnimationButton() {
+export default function AnimationButton({
+  dataName,
+  goodAnswer,
+  setPoints,
+  points,
+}) {
   const [showImage, setShowImage] = useState(false);
+  const [className, setClassName] = useState("button");
 
   const handleClick = () => {
     setShowImage(true);
     setTimeout(() => {
       setShowImage(false);
     }, 1000);
+    if (dataName === goodAnswer) {
+      setClassName("greenButton");
+    } else {
+      setClassName("redButton");
+    }
+    setTimeout(() => setClassName("button"), 1000);
+    if (dataName === goodAnswer) {
+      setPoints(points + 1000);
+    } else {
+      setPoints(points + 0);
+    }
   };
 
   return (
     <div className="animation-button">
-      <button className="button" type="button" onClick={handleClick}>
-        Click Me
+      <button className={className} type="button" onClick={handleClick}>
+        {dataName}
       </button>
       {showImage && (
         <motion.img
@@ -31,3 +49,10 @@ export default function AnimationButton() {
     </div>
   );
 }
+
+AnimationButton.propTypes = {
+  dataName: PropTypes.string.isRequired,
+  goodAnswer: PropTypes.string.isRequired,
+  setPoints: PropTypes.func.isRequired,
+  points: PropTypes.number.isRequired,
+};
