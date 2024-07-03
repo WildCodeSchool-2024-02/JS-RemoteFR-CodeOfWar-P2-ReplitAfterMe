@@ -5,7 +5,10 @@ import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
+
 import AnimationButton from "./AnimationButton";
+
+import PopUp from "./PopUp";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
@@ -15,6 +18,11 @@ function Quizz() {
   const maxQuestions = 10;
 
   const data = useLoaderData();
+  const [popUP, setPopUp] = useState(false);
+
+  const togglePopup = () => {
+    setPopUp(!popUP);
+  };
 
   const setQuestion = useCallback(() => {
     const nextAnswerArray = [];
@@ -51,9 +59,9 @@ function Quizz() {
   return (
     <>
       <header className="header">
-        <Link to="/">
+        <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
-        </Link>
+        </div>
         <button type="button">{points} pts</button>
       </header>
 
@@ -76,12 +84,11 @@ function Quizz() {
           numQuestion={numQuestion}
         />
       ))}
-
+      {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
     </>
   );
 }
-
 export default Quizz;
