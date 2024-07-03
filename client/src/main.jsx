@@ -5,10 +5,11 @@ import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App";
-import "./style/app.css";
 import Quizz from "./components/Quizz";
 import Story from "./components/Story";
 import HomePage from "./components/HomePage";
+
+import "./style/app.css";
 
 const countryData = async () => {
   const data = await axios.get(

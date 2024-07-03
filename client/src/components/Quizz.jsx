@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
@@ -30,7 +30,9 @@ function Quizz() {
   return (
     <>
       <header className="header">
-        <img src={avatar} alt="avatar de profil" />
+        <Link to="/">
+          <img src={avatar} alt="avatar de profil" />
+        </Link>
         <button type="button">{points} pts</button>
       </header>
 
