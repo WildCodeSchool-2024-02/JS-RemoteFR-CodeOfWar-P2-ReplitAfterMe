@@ -7,43 +7,18 @@ export default function ClickEffect({
   setPoints,
   points,
 }) {
-  console.info(goodAnswer);
   return (
-    <div className="answers-class1">
-      <div className="answers">
-        <AnimationButton
-          dataName={dataName[0]}
-          goodAnswer={goodAnswer}
-          setPoints={setPoints}
-          points={points}
-        />
-        <AnimationButton
-          dataName={dataName[1]}
-          goodAnswer={goodAnswer}
-          setPoints={setPoints}
-          points={points}
-        />
-      </div>
-      <div className="answers">
-        <AnimationButton
-          dataName={dataName[2]}
-          goodAnswer={goodAnswer}
-          setPoints={setPoints}
-          points={points}
-        />
-        <AnimationButton
-          dataName={dataName[3]}
-          goodAnswer={goodAnswer}
-          setPoints={setPoints}
-          points={points}
-        />
-      </div>
-    </div>
+    <AnimationButton
+      dataName={dataName}
+      goodAnswer={goodAnswer}
+      setPoints={setPoints}
+      points={points}
+    />
   );
 }
 
 ClickEffect.propTypes = {
-  dataName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dataName: PropTypes.string.isRequired,
   goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,

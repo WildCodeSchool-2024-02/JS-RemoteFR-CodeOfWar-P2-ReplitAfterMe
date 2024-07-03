@@ -1,6 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
@@ -9,31 +8,25 @@ import Question from "./Question";
 import ClickEffect from "./ClickEffect";
 
 function Quizz() {
-  const [data, setData] = useState([]);
-  const number = Math.floor(Math.random(0, data.length) * data.length);
   const [points, setPoints] = useState(0);
 
-  const countryData = () => {
-    // Send the request
-    axios
-      .get(
-        "https://restcountries.com/v3.1/region/europe?fields=flags,name,cca3"
-      )
-      // Use this data to update the state
-      .then((response) => {
-        setData(response.data);
-      });
-  };
+  const data = useLoaderData();
 
-  const dataName = data.map((d) => d.name.common);
-  const dataFlags = data.map((d) => d.flags.svg);
-  const goodAnswer = dataName[0];
-  console.info(dataName);
-  useEffect(() => {
-    countryData();
-  }, []);
+  // load new array with 4 answers
+  const answerArray = [];
+  for (let i = 0; i < 4; i += 1) {
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const selectedItem = data.splice(randomIndex, 1)[0];
+    answerArray.push(selectedItem);
+  }
 
-  console.info(dataFlags);
+  // replace number
+  const goodAnswer =
+    answerArray[Math.floor(Math.random() * answerArray.length)];
+
+  // answerArray with only name
+  const dataName = answerArray.map((answer) => answer.name.common);
+
   return (
     <>
       <header className="header">
@@ -42,22 +35,21 @@ function Quizz() {
         </Link>
         <button type="button">{points} pts</button>
       </header>
-      {data.length === 0 ? (
-        " "
-      ) : (
-        <Question
-          dataFlags={dataFlags}
-          goodAnswer={goodAnswer}
-          data={data}
-          number={number}
-        />
-      )}
-      <ClickEffect
-        dataName={dataName}
-        goodAnswer={goodAnswer}
-        setPoints={setPoints}
-        points={points}
+
+      <Question
+        dataFlags={goodAnswer.flags.svg}
+        dataAlt={goodAnswer.flags.alt}
       />
+
+      {dataName.map((country) => (
+        <ClickEffect
+          key={country}
+          dataName={country}
+          goodAnswer={goodAnswer.name.common}
+          setPoints={setPoints}
+          points={points}
+        />
+      ))}
 
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />

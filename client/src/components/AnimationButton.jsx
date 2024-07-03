@@ -51,7 +51,7 @@ export default function AnimationButton({
 }
 
 AnimationButton.propTypes = {
-  dataName: PropTypes.arrayOf(PropTypes.string).isRequired,
+  dataName: PropTypes.string.isRequired,
   goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
