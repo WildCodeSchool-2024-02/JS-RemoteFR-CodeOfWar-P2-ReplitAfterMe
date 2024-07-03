@@ -1,61 +1,94 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
-import ClickEffect from "./ClickEffect";
+
+import AnimationButton from "./AnimationButton";
+
+import PopUp from "./PopUp";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
+  const [answerArray, setAnswerArray] = useState([]);
+  const [goodAnswer, setGoodAnswer] = useState(null);
+  const [numQuestion, setNumQuestion] = useState(0);
+  const maxQuestions = 10;
 
   const data = useLoaderData();
+  const [popUP, setPopUp] = useState(false);
 
-  // load new array with 4 answers
-  const answerArray = [];
-  for (let i = 0; i < 4; i += 1) {
-    const randomIndex = Math.floor(Math.random() * data.length);
-    const selectedItem = data.splice(randomIndex, 1)[0];
-    answerArray.push(selectedItem);
+  const togglePopup = () => {
+    setPopUp(!popUP);
+  };
+
+  const setQuestion = useCallback(() => {
+    const nextAnswerArray = [];
+    for (let i = 0; i < 4; i += 1) {
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const selectedItem = data.splice(randomIndex, 1)[0];
+      nextAnswerArray.push(selectedItem);
+    }
+    const nextGoodAnswer =
+      nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
+    setAnswerArray(nextAnswerArray);
+    setGoodAnswer(nextGoodAnswer);
+  }, [data]);
+
+  useEffect(() => {
+    setQuestion();
+  }, [setQuestion]);
+
+  if (numQuestion >= maxQuestions) {
+    return (
+      <div>
+        Vous avez obtenu : {points} points
+        <Link to="/story">
+          <button type="button">Histoire</button>
+        </Link>
+      </div>
+    );
   }
 
-  // replace number
-  const goodAnswer =
-    answerArray[Math.floor(Math.random() * answerArray.length)];
-
-  // answerArray with only name
-  const dataName = answerArray.map((answer) => answer.name.common);
+  if (!goodAnswer) {
+    return "";
+  }
 
   return (
     <>
       <header className="header">
-        <Link to="/">
+        <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
-        </Link>
+        </div>
         <button type="button">{points} pts</button>
       </header>
 
       <Question
         dataFlags={goodAnswer.flags.svg}
         dataAlt={goodAnswer.flags.alt}
+        numQuestion={numQuestion}
+        maxQuestions={maxQuestions}
       />
 
-      {dataName.map((country) => (
-        <ClickEffect
-          key={country}
-          dataName={country}
+      {answerArray.map((country) => (
+        <AnimationButton
+          key={country.name.common}
+          dataName={country.name.common}
           goodAnswer={goodAnswer.name.common}
           setPoints={setPoints}
           points={points}
+          setQuestion={setQuestion}
+          setNumQuestion={setNumQuestion}
+          numQuestion={numQuestion}
         />
       ))}
-
+      {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
     </>
   );
 }
-
 export default Quizz;
