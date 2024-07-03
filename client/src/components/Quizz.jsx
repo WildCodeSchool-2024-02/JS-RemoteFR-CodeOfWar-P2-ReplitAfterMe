@@ -11,6 +11,7 @@ function Quizz() {
   const [points, setPoints] = useState(0);
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
+  const [numQuestion, setNumQuestion] = useState(1);
 
   const data = useLoaderData();
 
@@ -21,7 +22,6 @@ function Quizz() {
       const selectedItem = data.splice(randomIndex, 1)[0];
       nextAnswerArray.push(selectedItem);
     }
-    console.info(nextAnswerArray);
     const nextGoodAnswer =
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
@@ -29,18 +29,21 @@ function Quizz() {
   }, [data]);
 
   useEffect(() => {
-    setQuestion();
-  }, [setQuestion]);
+    if (data.length > 0) {
+      setQuestion();
+    }
+  }, [data, setQuestion]);
 
-  if (!goodAnswer)
+  if (numQuestion >= 11) {
     return (
       <div>
-        vous avez obtenu :{points} points
+        Vous avez obtenu : {points} points
         <Link to="/story">
-          <button type="button">histoire</button>
+          <button type="button">Histoire</button>
         </Link>
       </div>
     );
+  }
 
   return (
     <>
@@ -54,6 +57,7 @@ function Quizz() {
       <Question
         dataFlags={goodAnswer.flags.svg}
         dataAlt={goodAnswer.flags.alt}
+        numQuestion={numQuestion}
       />
 
       {answerArray.map((country) => (
@@ -64,6 +68,8 @@ function Quizz() {
           setPoints={setPoints}
           points={points}
           setQuestion={setQuestion}
+          setNumQuestion={setNumQuestion}
+          numQuestion={numQuestion}
         />
       ))}
 

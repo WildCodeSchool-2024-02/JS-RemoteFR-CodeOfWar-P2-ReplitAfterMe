@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 
 import "../style/question.css";
 
-export default function Question({ dataAlt, dataFlags }) {
-  console.info(dataFlags);
+export default function Question({ dataAlt, dataFlags, numQuestion }) {
   return (
     <>
       <div className="question">
@@ -11,7 +10,7 @@ export default function Question({ dataAlt, dataFlags }) {
         <p>À quel pays appartient ce drapeau ?</p>
       </div>
       <div className="chapitre">
-        <p>Chapitre 1, question 1/10</p>
+        <p>Chapitre 1, question {numQuestion}/10</p>
       </div>
     </>
   );
@@ -20,4 +19,5 @@ export default function Question({ dataAlt, dataFlags }) {
 Question.propTypes = {
   dataAlt: PropTypes.string.isRequired,
   dataFlags: PropTypes.string.isRequired,
+  numQuestion: PropTypes.number.isRequired,
 };
