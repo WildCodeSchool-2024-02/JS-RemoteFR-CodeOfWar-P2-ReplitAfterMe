@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
 import atout from "../assets/images/atout.png";
 import Question from "./Question";
 import ClickEffect from "./ClickEffect";
+import PopUp from "./PopUp";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
 
   const data = useLoaderData();
+  const [popUP, setPopUp] = useState(false);
+
+  const togglePopup = () => {
+    setPopUp(!popUP);
+  };
 
   // load new array with 4 answers
   const answerArray = [];
@@ -30,9 +36,9 @@ function Quizz() {
   return (
     <>
       <header className="header">
-        <Link to="/">
+        <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
-        </Link>
+        </div>
         <button type="button">{points} pts</button>
       </header>
 
@@ -50,12 +56,11 @@ function Quizz() {
           points={points}
         />
       ))}
-
+      {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
     </>
   );
 }
-
 export default Quizz;
