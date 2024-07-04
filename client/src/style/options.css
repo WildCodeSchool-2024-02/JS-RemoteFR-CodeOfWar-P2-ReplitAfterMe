@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Vast+Shadow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* références couleurs */
+
+  --primary-color: #ffbb33;
+  --secondary-color: blue;
+  --white-color: #e5e2e2;
+  --dark-color: #0d0c0c;
+  --red-color: #8b0000;
+
+  /* font */
+  --primary-font: "Cinzel Decorative", sans-serif;
+  --primary-font-weight-regular: 400;
+  /*font-paragraphe*/
+
+  --primary-font-weight-bold: 700;
+  /*font button jouer*/
+
+  --secondary-font: "Vast Shadow", cursive;
+  /* font-title  */
+  --thirty-font: "raleway", sans-serif;
+  /*font-paragraphe*/
+}
+
+.blur {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.popUp {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  width: 70%;
+  height: 30%;
+  border: 1px red solid;
+}
+
+.popUp h1 {
+  text-align: center;
+}
+.buttonPop {
+  text-align: right;
+}
+
+.buttonPop button {
+  background-color: #0d0c0c;
+  color: var(--white-color);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.5rem 0.5rem 0 0;
+}
+
+.popUp ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.componentsPop {
+  display: flex;
+  justify-content: space-around;
+}
+
+.componentsPop > p {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.volumeImg {
+  width: 2rem;
+}
