@@ -10,9 +10,19 @@
   border-radius: 8px;
   background-color: var(--dark-color);
   color: var(--white-color);
-  font-size: 13px;
+  font-size: 1rem;
+  font-family: var(--primary-font);
 }
-
+.answer-div {
+  width: calc(100vw - 2rem);
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
 .footer {
   margin-top: 2rem;
 }

@@ -1,5 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Vast+Shadow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* références couleurs */
+
+  --primary-color: #ffbb33;
+  --secondary-color: blue;
+  --white-color: #e5e2e2;
+  --dark-color: #0d0c0c;
+  --red-color: #8b0000;
+  --first-grey: #464646;
+  --first-green: #05650c;
+
+  /* font */
+  --primary-font: "Cinzel Decorative", sans-serif;
+  --primary-font-weight-regular: 400;
+  /*font-paragraphe*/
+
+  --primary-font-weight-bold: 700;
+  /*font button jouer*/
+
+  --secondary-font: "Vast Shadow", cursive;
+  /* font-title  */
+  --thirty-font: "raleway", sans-serif;
+  /*font-paragraphe*/
+}
+
 body {
-  background: rgb(240, 178, 7);
   height: 100vh;
   margin: 0;
 }
@@ -11,15 +44,18 @@ body {
 }
 
 .button {
-  padding: 20px 55px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
-  background-color: grey;
+  background-color: var(--first-grey);
   box-shadow: 2px 5px 8px 3px #6b6969;
-  color: white;
-  border: 1px solid black;
-  border-radius: 5px;
+  color: var(--white-color);
+  border: 1px solid var(--dark-color);
+  border-radius: 8px;
   transition: all 0.3s ease;
+  font-family: var(--thirty-font);
+  min-width: 8rem;
+  min-height: 5rem;
+  padding: 0.5rem;
 }
 
 .button:active {
@@ -28,27 +64,30 @@ body {
 }
 
 .greenButton {
-  background-color: greenyellow;
-  padding: 20px 55px;
-  font-size: 16px;
+  background-color: var(--first-green);
+
+  font-size: 1rem;
   cursor: pointer;
-  box-shadow: 2px 5px 8px 3px #6b6969;
-  color: white;
-  border: 1px solid black;
-  border-radius: 5px;
+  box-shadow: 2px 5px 8px 3px var(--first-grey);
+  color: var(--white-color);
+  border: 1px solid var(--dark-color);
+  border-radius: 8px;
   transition: all 0.3s ease;
+  min-width: 8rem;
+  min-height: 5rem;
 }
 
 .redButton {
-  padding: 20px 55px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
-  background-color: red;
+  background-color: var(--red-color);
   box-shadow: 2px 5px 8px 3px #6b6969;
   color: white;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  min-width: 8rem;
+  min-height: 5rem;
 }
 
 .animation-image {
@@ -59,13 +98,6 @@ body {
   width: 50px;
   height: 50px;
   pointer-events: none;
-}
-
-.answers-class1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .answers > * {

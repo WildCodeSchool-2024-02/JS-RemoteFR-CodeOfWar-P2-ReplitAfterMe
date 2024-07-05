@@ -71,19 +71,20 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
-
-      {answerArray.map((country) => (
-        <AnimationButton
-          key={country.name.common}
-          dataName={country.name.common}
-          goodAnswer={goodAnswer.name.common}
-          setPoints={setPoints}
-          points={points}
-          setQuestion={setQuestion}
-          setNumQuestion={setNumQuestion}
-          numQuestion={numQuestion}
-        />
-      ))}
+      <div className="answer-div">
+        {answerArray.map((country) => (
+          <AnimationButton
+            key={country.name.common}
+            dataName={country.name.common}
+            goodAnswer={goodAnswer.name.common}
+            setPoints={setPoints}
+            points={points}
+            setQuestion={setQuestion}
+            setNumQuestion={setNumQuestion}
+            numQuestion={numQuestion}
+          />
+        ))}
+      </div>
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
