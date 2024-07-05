@@ -13,8 +13,8 @@ body {
   background-position-y: top;
 }
 
-.TitleHome,
-.Links {
+.titleHome,
+.links {
   color: #0d0c0c;
   text-align: center;
   list-style: none;
@@ -35,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
 }
-.Links {
+.links {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

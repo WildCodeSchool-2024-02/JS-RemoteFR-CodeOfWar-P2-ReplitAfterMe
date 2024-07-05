@@ -1,30 +1,43 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 import "../style/homePage.css";
+import Options from "../pages/Options";
 
-function HomePage() {
+export default function HomePage() {
+  const [seen, setSeen] = useState(false);
+
+  const handleClickPopUp = () => {
+    setSeen(!seen);
+  };
+
   return (
     <div>
-      <div className="TitleHome">
+      {seen && <Options handleClickPopUp={handleClickPopUp} />}
+      <div className="titleHome">
         <h1>Geo Quest</h1>
       </div>
-      <div className="LinksContainer">
-        <ul className="Links">
+      <div className="linksContainer">
+        <ul className="links">
           <li>
-            <Link to="/quizz" className="Play">
+            <Link to="/quizz" className="play">
               JOUER
             </Link>
           </li>
-          <div className="Option">
+          <div className="option">
             <li>
-              <a href="Options" className="LinksHome">
-                Options
-              </a>
+              <div aria-hidden="true" className="linksHome">
+                Histoire
+              </div>
             </li>
             <li>
-              <a href="Leave" className="LinksHome">
-                Quitter
-              </a>
+              <div
+                aria-hidden="true"
+                onClick={handleClickPopUp}
+                className="linksHome"
+              >
+                Options
+              </div>
             </li>
           </div>
         </ul>
@@ -32,5 +45,3 @@ function HomePage() {
     </div>
   );
 }
-
-export default HomePage;
