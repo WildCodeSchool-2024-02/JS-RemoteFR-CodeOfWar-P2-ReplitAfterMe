@@ -4,31 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  /* références couleurs */
-
-  --primary-color: #ffbb33;
-  --secondary-color: blue;
-  --white-color: #e5e2e2;
-  --dark-color: #0d0c0c;
-  --red-color: #8b0000;
-  --first-grey: #464646;
-  --first-green: #05650c;
-
-  /* font */
-  --primary-font: "Cinzel Decorative", sans-serif;
-  --primary-font-weight-regular: 400;
-  /*font-paragraphe*/
-
-  --primary-font-weight-bold: 700;
-  /*font button jouer*/
-
-  --secondary-font: "Vast Shadow", cursive;
-  /* font-title  */
-  --thirty-font: "raleway", sans-serif;
-  /*font-paragraphe*/
-}
-
 body {
   background-color: var(--primary-color);
   /* overflow: hidden; */
