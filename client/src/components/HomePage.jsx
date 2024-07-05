@@ -12,7 +12,7 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <main className="home-container">
       {seen && <Options handleClickPopUp={handleClickPopUp} />}
       <div className="titleHome">
         <h1>Geo Quest</h1>
@@ -42,6 +42,6 @@ export default function HomePage() {
           </div>
         </ul>
       </div>
-    </div>
+    </main>
   );
 }

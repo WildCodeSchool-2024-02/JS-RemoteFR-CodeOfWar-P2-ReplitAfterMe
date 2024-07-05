@@ -35,7 +35,6 @@
 body {
   height: 100vh;
   margin: 0;
-  background: linear-gradient(135deg, #b0c4de 0%, #1e90ff 100%);
 }
 
 .animation-button {
