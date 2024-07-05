@@ -1,7 +1,17 @@
+.main-quizz {
+  background: linear-gradient(135deg, #b0c4de 0%, #1e90ff 100%);
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .header {
-  padding: 1rem;
+  padding: 0rem 1rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .header > button {
@@ -10,9 +20,16 @@
   border-radius: 8px;
   background-color: var(--dark-color);
   color: var(--white-color);
-  font-size: 13px;
+  font-size: 1rem;
+  font-family: var(--primary-font);
 }
-
-.footer {
-  margin-top: 2rem;
+.answer-div {
+  width: calc(100vw - 2rem);
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
 }

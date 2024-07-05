@@ -12,10 +12,3 @@ body {
   display: flex;
   flex-direction: row-reverse;
 }
-
-p {
-  width: 32ch;
-  background-color: beige;
-  margin: 2rem;
-  padding: 1rem;
-}
