@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.img-atout {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}

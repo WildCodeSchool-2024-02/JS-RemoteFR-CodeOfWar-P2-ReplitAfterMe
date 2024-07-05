@@ -3,10 +3,11 @@ import { useLoaderData } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
-import atout from "../assets/images/atout.png";
+
 import Question from "./Question";
 import ClickEffect from "./ClickEffect";
 import PopUp from "./PopUp";
+import Atout from "./Atouts";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
@@ -58,7 +59,7 @@ function Quizz() {
       ))}
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
-        <img src={atout} alt="utilisation d'un atout pour le quizz" />
+        <Atout />
       </footer>
     </>
   );
