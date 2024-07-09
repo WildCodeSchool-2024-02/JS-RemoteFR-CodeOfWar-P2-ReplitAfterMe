@@ -15,6 +15,8 @@
   --white-color: #e5e2e2;
   --dark-color: #0d0c0c;
   --red-color: #8b0000;
+  --first-grey: #464646;
+  --first-green: #05650c;
 
   /* font */
   --primary-font: "Cinzel Decorative", sans-serif;
@@ -28,4 +30,16 @@
   /* font-title  */
   --thirty-font: "raleway", sans-serif;
   /*font-paragraphe*/
+}
+
+p {
+  font-family: var(--thirty-font);
+}
+
+h1 {
+  font-family: var(--secondary-font);
+  color: var(--dark-color);
+}
+body {
+  background-color: var(--white-color);
 }

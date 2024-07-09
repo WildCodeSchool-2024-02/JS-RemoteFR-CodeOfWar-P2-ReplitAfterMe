@@ -57,7 +57,7 @@ function Quizz() {
   }
 
   return (
-    <>
+    <main className="main-quizz">
       <header className="header">
         <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
@@ -71,24 +71,25 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
-
-      {answerArray.map((country) => (
-        <AnimationButton
-          key={country.name.common}
-          dataName={country.name.common}
-          goodAnswer={goodAnswer.name.common}
-          setPoints={setPoints}
-          points={points}
-          setQuestion={setQuestion}
-          setNumQuestion={setNumQuestion}
-          numQuestion={numQuestion}
-        />
-      ))}
+      <div className="answer-div">
+        {answerArray.map((country) => (
+          <AnimationButton
+            key={country.name.common}
+            dataName={country.name.common}
+            goodAnswer={goodAnswer.name.common}
+            setPoints={setPoints}
+            points={points}
+            setQuestion={setQuestion}
+            setNumQuestion={setNumQuestion}
+            numQuestion={numQuestion}
+          />
+        ))}
+      </div>
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
         <img src={atout} alt="utilisation d'un atout pour le quizz" />
       </footer>
-    </>
+    </main>
   );
 }
 export default Quizz;

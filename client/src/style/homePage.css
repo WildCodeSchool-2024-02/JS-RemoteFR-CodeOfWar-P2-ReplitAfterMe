@@ -1,16 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #ffbb33;
+  background-color: var(--primary-color);
   /* overflow: hidden; */
   background: url(../assets/images/plane.png) no-repeat;
   background-size: cover;
   background-position-x: center;
-  background-position-y: +5rem;
-  background-color: white;
-}
-
-.titleHome {
-  background-color: #ffbb33;
-  /* height: 40vh; */
+  background-position-y: top;
 }
 
 .titleHome,
@@ -19,22 +19,27 @@ body {
   text-align: center;
   list-style: none;
 }
-.titleHome > h1 {
-  font-size: 72px;
+.TitleHome > h1 {
+  font-size: 3rem;
+  color: var(--dark-color);
+  padding-top: 1rem;
 }
 
-.linksContainer {
+.LinksContainer {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
   list-style: none;
   height: 60vh;
   display: flex;
   justify-content: center;
-  margin-top: 25vh;
 }
 .links {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--primary-font);
 }
 
 a {
@@ -42,17 +47,17 @@ a {
   text-decoration: none;
 }
 
-.play {
-  font-size: 72px;
+.Play {
+  font-size: 4.5rem;
   font-weight: bold;
   display: block;
-  margin-top: 7rem;
+  margin-top: 4rem;
 }
 
-.linksHome {
-  font-size: 48px;
+.LinksHome {
+  font-size: 2.5rem;
 }
 
-ul > .option > li {
-  margin: 4rem 0rem;
+ul > .Option > li {
+  margin-top: 4rem;
 }
