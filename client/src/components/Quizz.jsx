@@ -3,8 +3,9 @@ import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 import avatar from "../assets/images/avatar.png";
-import atout from "../assets/images/atout.png";
 import Question from "./Question";
+import Atout from "./Atout";
+import atouts from "../data/atout";
 
 import AnimationButton from "./AnimationButton";
 
@@ -57,7 +58,7 @@ function Quizz() {
   }
 
   return (
-    <main className="main-quizz">
+    <main className="quizz-container">
       <header className="header">
         <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
@@ -87,7 +88,10 @@ function Quizz() {
       </div>
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
-        <img src={atout} alt="utilisation d'un atout pour le quizz" />
+        {/* composant doublant les points */}
+        {atouts.map((atout) => (
+          <Atout key={atout.name} image={atout.img.src} />
+        ))}
       </footer>
     </main>
   );

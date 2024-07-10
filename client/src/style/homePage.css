@@ -4,13 +4,17 @@
   box-sizing: border-box;
 }
 
-body {
+.home-container {
   background-color: var(--primary-color);
   /* overflow: hidden; */
   background: url(../assets/images/plane.png) no-repeat;
   background-size: cover;
   background-position-x: center;
   background-position-y: top;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .titleHome,
@@ -19,13 +23,13 @@ body {
   text-align: center;
   list-style: none;
 }
-.TitleHome > h1 {
+.titleHome > h1 {
   font-size: 3rem;
   color: var(--dark-color);
   padding-top: 1rem;
 }
 
-.LinksContainer {
+.linksContainer {
   position: absolute;
   bottom: 0px;
   left: 50%;
@@ -38,7 +42,7 @@ body {
 .links {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   font-family: var(--primary-font);
 }
 
@@ -47,17 +51,17 @@ a {
   text-decoration: none;
 }
 
-.Play {
+.play {
   font-size: 4.5rem;
   font-weight: bold;
   display: block;
   margin-top: 4rem;
 }
 
-.LinksHome {
+.linksHome {
   font-size: 2.5rem;
 }
 
-ul > .Option > li {
+ul > .option > li {
   margin-top: 4rem;
 }
