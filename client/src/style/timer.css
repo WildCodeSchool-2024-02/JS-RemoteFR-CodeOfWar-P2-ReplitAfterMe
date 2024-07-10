@@ -1,0 +1,13 @@
+.timer {
+  text-align: left;
+}
+
+.time {
+  text-align: center;
+  font-size: 2rem;
+}
+input {
+  width: 100%;
+  margin: 10px 0;
+  pointer-events: none;
+}

@@ -11,6 +11,7 @@ export default function AnimationButton({
   setQuestion,
   setNumQuestion,
   numQuestion,
+  setSeconds,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
@@ -26,12 +27,14 @@ export default function AnimationButton({
       setTimeout(() => {
         setQuestion();
         setNumQuestion(numQuestion + 1);
+        setSeconds(10); // réinitialise le timer à chaque questions
       }, 2000);
     } else {
       setClassName("redButton");
       setTimeout(() => {
         setQuestion();
         setNumQuestion(numQuestion + 1);
+        setSeconds(10); // réinitialise le timer à chaque questions
       }, 2000);
     }
   };
@@ -64,4 +67,6 @@ AnimationButton.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setNumQuestion: PropTypes.func.isRequired,
   numQuestion: PropTypes.number.isRequired,
+
+  setSeconds: PropTypes.func.isRequired,
 };
