@@ -6,11 +6,11 @@ import volumeUp from "../assets/images/volume-up.png";
 
 export default function AudioPlayer() {
   const [audio] = useState(new Audio(url));
-  const [playing, setPlaying] = useState(false);
+  const [volume, setVolume] = useState(0);
 
-  console.info(playing);
+  console.info(volume);
 
-  const togglePlayBack = () => setPlaying(!playing);
+  // contrôle du son
 
   const start = () => {
     audio.play();
@@ -20,18 +20,23 @@ export default function AudioPlayer() {
     audio.pause();
   };
 
+  const changeVolume = () => {
+    if (volume < 0.01) {
+      pause();
+    } else if (volume > 0.01) {
+      start();
+    }
+  };
+
   return (
     <div>
-      {playing ? (
+      {/* changement de l'icone volume */}
+      {volume === 0 ? (
         <img
           className="volumeImg"
           aria-hidden="true"
           src={volumeOff}
           alt="Volume Off"
-          onClick={() => {
-            pause();
-            togglePlayBack();
-          }}
         />
       ) : (
         <img
@@ -39,12 +44,23 @@ export default function AudioPlayer() {
           aria-hidden="true"
           src={volumeUp}
           alt="Volume On"
-          onClick={() => {
-            start();
-            togglePlayBack();
-          }}
         />
       )}
+      {/* contrôle du volume */}
+      <input
+        className="volume-range vrange"
+        id="musicSlider"
+        type="range"
+        min={0.01}
+        max={1}
+        step={0.01}
+        value={volume}
+        onChange={(event) => {
+          setVolume(event.target.value);
+          audio.volume = volume;
+          changeVolume();
+        }}
+      />
     </div>
   );
 }
