@@ -8,7 +8,7 @@ import Atout from "./Atout";
 import atouts from "../data/atout";
 import Timer from "./Timer";
 
-import AnimationButton from "./AnimationButton";
+import AnswerButton from "./AnswerButton";
 
 import PopUp from "./PopUp";
 
@@ -17,7 +17,11 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
+
   const [seconds, setSeconds] = useState(10); // état du timer
+
+  const [bonus, setBonus] = useState(0);
+
   const maxQuestions = 10;
 
   const data = useLoaderData();
@@ -78,7 +82,7 @@ function Quizz() {
       {/* passage  l'état du timer en props */}
       <div className="answer-div">
         {answerArray.map((country) => (
-          <AnimationButton
+          <AnswerButton
             key={country.name.common}
             dataName={country.name.common}
             goodAnswer={goodAnswer.name.common}
@@ -87,14 +91,23 @@ function Quizz() {
             setQuestion={setQuestion}
             setNumQuestion={setNumQuestion}
             numQuestion={numQuestion}
+            bonus={bonus}
+            setBonus={setBonus}
           />
         ))}
       </div>
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
-        {/* composant doublant les points */}
         {atouts.map((atout) => (
-          <Atout key={atout.name} image={atout.img.src} />
+          <Atout
+            key={atout.name}
+            name={atout.name}
+            image={atout.img.src}
+            imageAlt={atout.img.alt}
+            fonction={atout.function}
+            bonus={bonus}
+            setBonus={setBonus}
+          />
         ))}
       </footer>
     </main>

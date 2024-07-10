@@ -5,33 +5,33 @@ const atouts = [
     name: "Double",
     img: {
       src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
-      alt: "",
+      alt: "symbole cliquable multiplie les points par deux",
     },
-    function: doubleIt(),
+    function: doubleIt,
   },
   {
-    name: "Double",
+    name: "toto",
     img: {
       src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
       alt: "",
     },
-    function: "",
+    function: doubleIt,
   },
   {
-    name: "Double",
+    name: "tata",
     img: {
       src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
       alt: "",
     },
-    function: "",
+    function: doubleIt,
   },
   {
-    name: "Double",
+    name: "POULE",
     img: {
       src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
       alt: "",
     },
-    function: "",
+    function: doubleIt,
   },
 ];
 

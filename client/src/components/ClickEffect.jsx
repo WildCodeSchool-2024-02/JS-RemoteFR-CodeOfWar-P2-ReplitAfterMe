@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import AnimationButton from "./AnimationButton";
+import AnimationButton from "./AnswerButton";
 
 export default function ClickEffect({
   dataName,
