@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import "../style/buttonBlood.css";
 
-export default function AnimationButton({
+export default function AnswerButton({
   dataName,
   goodAnswer,
   setPoints,
@@ -11,6 +11,8 @@ export default function AnimationButton({
   setQuestion,
   setNumQuestion,
   numQuestion,
+  bonus,
+  setBonus,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
@@ -22,8 +24,9 @@ export default function AnimationButton({
     }, 1000);
     if (dataName === goodAnswer) {
       setClassName("greenButton");
-      setPoints(points + 1000);
+      setPoints(points + 1000 + bonus);
       setTimeout(() => {
+        setBonus(0);
         setQuestion();
         setNumQuestion(numQuestion + 1);
       }, 2000);
@@ -31,6 +34,7 @@ export default function AnimationButton({
       setClassName("redButton");
       setTimeout(() => {
         setQuestion();
+        setBonus(0);
         setNumQuestion(numQuestion + 1);
       }, 2000);
     }
@@ -56,7 +60,7 @@ export default function AnimationButton({
   );
 }
 
-AnimationButton.propTypes = {
+AnswerButton.propTypes = {
   dataName: PropTypes.string.isRequired,
   goodAnswer: PropTypes.string.isRequired,
   setPoints: PropTypes.func.isRequired,
@@ -64,4 +68,6 @@ AnimationButton.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setNumQuestion: PropTypes.func.isRequired,
   numQuestion: PropTypes.number.isRequired,
+  bonus: PropTypes.number.isRequired,
+  setBonus: PropTypes.func.isRequired,
 };
