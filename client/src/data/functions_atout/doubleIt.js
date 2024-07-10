@@ -1,10 +1,8 @@
-function setBonus(value) {
-  console.info(value);
-}
 function doubleIt() {
-  const Bonus = 0;
-
-  return setBonus(Bonus + 1000);
+  let Bonus = 0;
+  Bonus += 1000;
+  console.info(Bonus);
+  return Bonus;
 }
 
 export default doubleIt;

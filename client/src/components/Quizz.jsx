@@ -7,7 +7,7 @@ import Question from "./Question";
 import Atout from "./Atout";
 import atouts from "../data/atout";
 
-import AnimationButton from "./AnimationButton";
+import AnswerButton from "./AnswerButton";
 
 import PopUp from "./PopUp";
 
@@ -16,6 +16,8 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
+  const [bonus, setBonus] = useState(0);
+
   // const [Bonus, setBonus] = useState(0);
   const maxQuestions = 10;
 
@@ -66,8 +68,6 @@ function Quizz() {
         </div>
         <button type="button">{points} pts</button>
       </header>
-      {console.info(atouts[1])}
-      {console.info(atouts[0].function)}
 
       <Question
         dataFlags={goodAnswer.flags.svg}
@@ -77,7 +77,7 @@ function Quizz() {
       />
       <div className="answer-div">
         {answerArray.map((country) => (
-          <AnimationButton
+          <AnswerButton
             key={country.name.common}
             dataName={country.name.common}
             goodAnswer={goodAnswer.name.common}
@@ -86,21 +86,22 @@ function Quizz() {
             setQuestion={setQuestion}
             setNumQuestion={setNumQuestion}
             numQuestion={numQuestion}
-            // bonus={Bonus}
+            bonus={bonus}
+            setBonus={setBonus}
           />
         ))}
       </div>
       {popUP && <PopUp handleClose={togglePopup} />}
       <footer className="footer">
-        {/* composant doublant les points */}
         {atouts.map((atout) => (
           <Atout
             key={atout.name}
+            name={atout.name}
             image={atout.img.src}
             imageAlt={atout.img.alt}
             fonction={atout.function}
-            // bonus={Bonus}
-            // setBonus={setBonus}
+            bonus={bonus}
+            setBonus={setBonus}
           />
         ))}
       </footer>
