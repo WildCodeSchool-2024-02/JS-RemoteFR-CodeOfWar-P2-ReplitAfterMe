@@ -1,19 +1,20 @@
 import doubleIt from "./functions_atout/doubleIt";
+import imgEchange from "../assets/images/changeQuestions.png";
 
 const atouts = [
   {
     name: "Double",
     img: {
       src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
-      alt: "symbole cliquable multiplie les points par deux",
+      alt: "logo cliquable multiplie les points par deux",
     },
     function: doubleIt,
   },
   {
-    name: "toto",
+    name: "Change Question",
     img: {
-      src: "https://cdn-icons-png.flaticon.com/512/25/25685.png",
-      alt: "",
+      src: imgEchange,
+      alt: "logo cliquable change la question",
     },
     function: doubleIt,
   },

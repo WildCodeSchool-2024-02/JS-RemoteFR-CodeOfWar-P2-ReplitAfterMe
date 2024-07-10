@@ -102,6 +102,7 @@ function Quizz() {
             fonction={atout.function}
             bonus={bonus}
             setBonus={setBonus}
+            setQuestion={setQuestion}
           />
         ))}
       </footer>
