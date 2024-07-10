@@ -16,6 +16,7 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
+  // const [Bonus, setBonus] = useState(0);
   const maxQuestions = 10;
 
   const data = useLoaderData();
@@ -65,6 +66,8 @@ function Quizz() {
         </div>
         <button type="button">{points} pts</button>
       </header>
+      {console.info(atouts[1])}
+      {console.info(atouts[0].function)}
 
       <Question
         dataFlags={goodAnswer.flags.svg}
@@ -83,6 +86,7 @@ function Quizz() {
             setQuestion={setQuestion}
             setNumQuestion={setNumQuestion}
             numQuestion={numQuestion}
+            // bonus={Bonus}
           />
         ))}
       </div>
@@ -90,7 +94,14 @@ function Quizz() {
       <footer className="footer">
         {/* composant doublant les points */}
         {atouts.map((atout) => (
-          <Atout key={atout.name} image={atout.img.src} />
+          <Atout
+            key={atout.name}
+            image={atout.img.src}
+            imageAlt={atout.img.alt}
+            fonction={atout.function}
+            // bonus={Bonus}
+            // setBonus={setBonus}
+          />
         ))}
       </footer>
     </main>

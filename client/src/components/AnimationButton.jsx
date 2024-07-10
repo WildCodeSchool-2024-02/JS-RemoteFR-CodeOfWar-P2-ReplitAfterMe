@@ -11,9 +11,11 @@ export default function AnimationButton({
   setQuestion,
   setNumQuestion,
   numQuestion,
+  // bonus,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
+  // const Bonus = setPoints();
 
   const handleClick = () => {
     setShowImage(true);
@@ -23,6 +25,7 @@ export default function AnimationButton({
     if (dataName === goodAnswer) {
       setClassName("greenButton");
       setPoints(points + 1000);
+      // Bonus(points + bonus, console.info(bonus));
       setTimeout(() => {
         setQuestion();
         setNumQuestion(numQuestion + 1);
@@ -64,4 +67,5 @@ AnimationButton.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setNumQuestion: PropTypes.func.isRequired,
   numQuestion: PropTypes.number.isRequired,
+  // bonus: PropTypes.number.isRequired,
 };
