@@ -57,7 +57,7 @@ function Quizz() {
   }
 
   return (
-    <main className="main-quizz">
+    <main className="quizz-container">
       <header className="header">
         <div aria-hidden="true" onClick={togglePopup}>
           <img src={avatar} alt="avatar de profil" />
