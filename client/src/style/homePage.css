@@ -30,10 +30,8 @@
 }
 
 .linksContainer {
-  position: absolute;
   bottom: 0px;
   left: 50%;
-  transform: translateX(-50%);
   list-style: none;
   height: 60vh;
   display: flex;
