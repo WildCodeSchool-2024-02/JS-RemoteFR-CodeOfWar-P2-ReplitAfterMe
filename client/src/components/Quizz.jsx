@@ -6,6 +6,7 @@ import avatar from "../assets/images/avatar.png";
 import Question from "./Question";
 import Atout from "./Atout";
 import atouts from "../data/atout";
+import Timer from "./Timer";
 
 import AnswerButton from "./AnswerButton";
 
@@ -16,9 +17,11 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
+
+  const [seconds, setSeconds] = useState(10); // état du timer
+
   const [bonus, setBonus] = useState(0);
 
-  // const [Bonus, setBonus] = useState(0);
   const maxQuestions = 10;
 
   const data = useLoaderData();
@@ -39,7 +42,8 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-  }, [data]);
+    setSeconds(10); // Réinitialise le timer à chaque nouvelle question
+  }, [data, setSeconds]);
 
   useEffect(() => {
     setQuestion();
@@ -68,13 +72,14 @@ function Quizz() {
         </div>
         <button type="button">{points} pts</button>
       </header>
-
       <Question
         dataFlags={goodAnswer.flags.svg}
         dataAlt={goodAnswer.flags.alt}
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
+      <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
+      {/* passage  l'état du timer en props */}
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton
