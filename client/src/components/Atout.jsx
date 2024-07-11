@@ -8,17 +8,24 @@ export default function Atout({
   bonus,
   setBonus,
   setQuestion,
+  // call,
+  setArray,
 }) {
   const handleClick = () => {
     if (name === "Double") {
       setBonus(bonus + 1000);
     } else if (name === "Change Question") {
       setQuestion();
+    } else if (name === "Call") {
+      // call();
+    } else if (name === "50/50") {
+      setArray();
     }
   };
+
   return (
     <>
-      {console.info(setQuestion)};{console.info(fonction)};
+      {console.info("depuis fonction", fonction)};
       <button type="button" onClick={handleClick}>
         <img src={image} alt={imageAlt} />;
       </button>
@@ -33,4 +40,5 @@ Atout.propTypes = {
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
   setQuestion: PropTypes.func.isRequired,
+  setArray: PropTypes.func.isRequired,
 };

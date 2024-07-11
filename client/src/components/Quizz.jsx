@@ -18,7 +18,6 @@ function Quizz() {
   const [numQuestion, setNumQuestion] = useState(0);
   const [bonus, setBonus] = useState(0);
 
-  // const [Bonus, setBonus] = useState(0);
   const maxQuestions = 10;
 
   const data = useLoaderData();
@@ -44,6 +43,30 @@ function Quizz() {
   useEffect(() => {
     setQuestion();
   }, [setQuestion]);
+
+  const setArray = () => {
+    const reduceAnswerArray = [];
+    let secondAnswer;
+    do {
+      secondAnswer =
+        answerArray[Math.floor(Math.random() * answerArray.length)];
+    } while (secondAnswer === goodAnswer);
+    reduceAnswerArray.push(goodAnswer, secondAnswer);
+    setAnswerArray(reduceAnswerArray);
+  };
+
+  // --- ATOUT PROBA en construction ---//
+  const [randomAnswer, setRandomAnswer] = useState(null);
+
+  const call = (threshold = 0.75) => {
+    const random = Math.random() < threshold;
+    return setRandomAnswer(random);
+  };
+
+  console.info(randomAnswer);
+  // --- ATOUT PROBA en construction---//
+
+  console.info(answerArray);
 
   if (numQuestion >= maxQuestions) {
     return (
@@ -88,6 +111,7 @@ function Quizz() {
             numQuestion={numQuestion}
             bonus={bonus}
             setBonus={setBonus}
+            call={call}
           />
         ))}
       </div>
@@ -100,9 +124,12 @@ function Quizz() {
             image={atout.img.src}
             imageAlt={atout.img.alt}
             fonction={atout.function}
+            // props
             bonus={bonus}
             setBonus={setBonus}
             setQuestion={setQuestion}
+            setArray={setArray}
+            call={call}
           />
         ))}
       </footer>

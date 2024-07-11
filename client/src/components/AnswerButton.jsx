@@ -13,6 +13,7 @@ export default function AnswerButton({
   numQuestion,
   bonus,
   setBonus,
+  // call,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
