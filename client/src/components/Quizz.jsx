@@ -49,6 +49,30 @@ function Quizz() {
     setQuestion();
   }, [setQuestion]);
 
+  const setArray = () => {
+    const reduceAnswerArray = [];
+    let secondAnswer;
+    do {
+      secondAnswer =
+        answerArray[Math.floor(Math.random() * answerArray.length)];
+    } while (secondAnswer === goodAnswer);
+    reduceAnswerArray.push(goodAnswer, secondAnswer);
+    setAnswerArray(reduceAnswerArray);
+  };
+
+  const [randomAnswer, setRandomAnswer] = useState(null);
+
+  const call = () => {
+    const random = Math.random();
+    if (random <= 0.75) {
+      setRandomAnswer(goodAnswer.name.common);
+    } else {
+      setRandomAnswer(
+        answerArray[Math.floor(Math.random() * answerArray.length)].name.common
+      );
+    }
+  };
+
   if (numQuestion >= maxQuestions) {
     return (
       <div>
@@ -93,6 +117,7 @@ function Quizz() {
             numQuestion={numQuestion}
             bonus={bonus}
             setBonus={setBonus}
+            randomAnswer={randomAnswer}
           />
         ))}
       </div>
@@ -104,9 +129,11 @@ function Quizz() {
             name={atout.name}
             image={atout.img.src}
             imageAlt={atout.img.alt}
-            fonction={atout.function}
             bonus={bonus}
             setBonus={setBonus}
+            setQuestion={setQuestion}
+            setArray={setArray}
+            call={call}
           />
         ))}
       </footer>

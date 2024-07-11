@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import "../style/buttonBlood.css";
@@ -14,9 +14,16 @@ export default function AnswerButton({
   setSeconds,
   bonus,
   setBonus,
+  randomAnswer,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
+
+  useEffect(() => {
+    if (randomAnswer === dataName) {
+      setClassName("orange-button");
+    }
+  }, [randomAnswer, dataName]);
 
   const handleClick = () => {
     setShowImage(true);
@@ -74,4 +81,5 @@ AnswerButton.propTypes = {
   setSeconds: PropTypes.func.isRequired,
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
+  randomAnswer: PropTypes.string.isRequired,
 };
