@@ -18,6 +18,12 @@ export default function AnswerButton({
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
 
+  useEffect(() => {
+    if (randomAnswer === dataName) {
+      setClassName("orange-button");
+    }
+  }, [randomAnswer, dataName]);
+
   const handleClick = () => {
     setShowImage(true);
     setTimeout(() => {
@@ -40,18 +46,6 @@ export default function AnswerButton({
       }, 2000);
     }
   };
-
-  useEffect(() => {
-    if (randomAnswer === dataName) {
-      setClassName("orange-button");
-    } else {
-      setClassName(className);
-    }
-  }, [randomAnswer, dataName, className]);
-
-  // if (randomAnswer === dataName) {
-  //   setClassName("orange-button");
-  // } else {className};
 
   return (
     <div className="animation-button">

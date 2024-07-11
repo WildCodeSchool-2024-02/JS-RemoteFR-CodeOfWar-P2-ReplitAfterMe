@@ -4,7 +4,6 @@ export default function Atout({
   name,
   image,
   imageAlt,
-  fonction,
   bonus,
   setBonus,
   setQuestion,
@@ -24,19 +23,15 @@ export default function Atout({
   };
 
   return (
-    <>
-      {console.info("depuis fonction", fonction)};
-      <button type="button" onClick={handleClick}>
-        <img src={image} alt={imageAlt} />;
-      </button>
-    </>
+    <button type="button" onClick={handleClick}>
+      <img src={image} alt={imageAlt} />;
+    </button>
   );
 }
 Atout.propTypes = {
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   imageAlt: PropTypes.string.isRequired,
-  fonction: PropTypes.func.isRequired,
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
   setQuestion: PropTypes.func.isRequired,

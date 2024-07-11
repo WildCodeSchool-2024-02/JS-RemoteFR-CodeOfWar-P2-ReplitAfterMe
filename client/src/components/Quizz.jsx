@@ -55,12 +55,8 @@ function Quizz() {
     setAnswerArray(reduceAnswerArray);
   };
 
-  // --- ATOUT PROBA en construction ---//
-
   const [randomAnswer, setRandomAnswer] = useState(null);
 
-  // randomAnswer = objet de ton tableau
-  // passe à answerButton randomAnswer
   const call = () => {
     const random = Math.random();
     if (random <= 0.75) {
@@ -71,10 +67,6 @@ function Quizz() {
       );
     }
   };
-  console.info("depuis call :::::", randomAnswer);
-  // --- ATOUT PROBA en construction---//
-
-  console.info(answerArray);
 
   if (numQuestion >= maxQuestions) {
     return (
@@ -131,8 +123,6 @@ function Quizz() {
             name={atout.name}
             image={atout.img.src}
             imageAlt={atout.img.alt}
-            fonction={atout.function}
-            // props
             bonus={bonus}
             setBonus={setBonus}
             setQuestion={setQuestion}

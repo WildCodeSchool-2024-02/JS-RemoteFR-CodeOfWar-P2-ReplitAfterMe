@@ -63,6 +63,19 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1.5);
 }
 
+.orange-button {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: orange;
+  box-shadow: 2px 5px 8px 3px #6b6969;
+  color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 8rem;
+  min-height: 5rem;
+}
+
 .greenButton {
   background-color: var(--first-green);
 
@@ -81,19 +94,6 @@ body {
   font-size: 1rem;
   cursor: pointer;
   background-color: var(--red-color);
-  box-shadow: 2px 5px 8px 3px #6b6969;
-  color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  min-width: 8rem;
-  min-height: 5rem;
-}
-
-.orange-button {
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: orange;
   box-shadow: 2px 5px 8px 3px #6b6969;
   color: white;
   border: 1px solid black;
