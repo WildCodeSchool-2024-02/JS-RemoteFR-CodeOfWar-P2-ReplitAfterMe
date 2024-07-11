@@ -8,7 +8,7 @@ export default function Atout({
   bonus,
   setBonus,
   setQuestion,
-  // call,
+  call,
   setArray,
 }) {
   const handleClick = () => {
@@ -17,7 +17,7 @@ export default function Atout({
     } else if (name === "Change Question") {
       setQuestion();
     } else if (name === "Call") {
-      // call();
+      call();
     } else if (name === "50/50") {
       setArray();
     }
@@ -41,4 +41,5 @@ Atout.propTypes = {
   setBonus: PropTypes.func.isRequired,
   setQuestion: PropTypes.func.isRequired,
   setArray: PropTypes.func.isRequired,
+  call: PropTypes.func.isRequired,
 };

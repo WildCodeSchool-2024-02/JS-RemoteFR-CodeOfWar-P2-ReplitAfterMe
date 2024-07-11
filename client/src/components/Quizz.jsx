@@ -56,14 +56,22 @@ function Quizz() {
   };
 
   // --- ATOUT PROBA en construction ---//
+
   const [randomAnswer, setRandomAnswer] = useState(null);
 
-  const call = (threshold = 0.75) => {
-    const random = Math.random() < threshold;
-    return setRandomAnswer(random);
+  // randomAnswer = objet de ton tableau
+  // passe à answerButton randomAnswer
+  const call = () => {
+    const random = Math.random();
+    if (random <= 0.75) {
+      setRandomAnswer(goodAnswer.name.common);
+    } else {
+      setRandomAnswer(
+        answerArray[Math.floor(Math.random() * answerArray.length)].name.common
+      );
+    }
   };
-
-  console.info(randomAnswer);
+  console.info("depuis call :::::", randomAnswer);
   // --- ATOUT PROBA en construction---//
 
   console.info(answerArray);
@@ -111,7 +119,7 @@ function Quizz() {
             numQuestion={numQuestion}
             bonus={bonus}
             setBonus={setBonus}
-            call={call}
+            randomAnswer={randomAnswer}
           />
         ))}
       </div>

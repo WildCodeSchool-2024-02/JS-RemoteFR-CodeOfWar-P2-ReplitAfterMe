@@ -90,6 +90,19 @@ body {
   min-height: 5rem;
 }
 
+.orange-button {
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: orange;
+  box-shadow: 2px 5px 8px 3px #6b6969;
+  color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 8rem;
+  min-height: 5rem;
+}
+
 .animation-image {
   position: absolute;
   top: 20%;
