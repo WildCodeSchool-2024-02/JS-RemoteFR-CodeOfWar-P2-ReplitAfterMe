@@ -11,7 +11,6 @@ export default function AnswerButton({
   setQuestion,
   setNumQuestion,
   numQuestion,
-  setSeconds,
   bonus,
   setBonus,
   randomAnswer,
@@ -37,7 +36,6 @@ export default function AnswerButton({
         setBonus(0);
         setQuestion();
         setNumQuestion(numQuestion + 1);
-        setSeconds(10);
       }, 2000);
     } else {
       setClassName("redButton");
@@ -45,7 +43,6 @@ export default function AnswerButton({
         setQuestion();
         setBonus(0);
         setNumQuestion(numQuestion + 1);
-        setSeconds(10);
       }, 2000);
     }
   };
@@ -71,7 +68,6 @@ export default function AnswerButton({
 }
 
 AnswerButton.defaultProps = {
-  setSeconds: PropTypes.null,
   randomAnswer: PropTypes.null,
 };
 
@@ -83,7 +79,6 @@ AnswerButton.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setNumQuestion: PropTypes.func.isRequired,
   numQuestion: PropTypes.number.isRequired,
-  setSeconds: PropTypes.func,
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
   randomAnswer: PropTypes.string,
