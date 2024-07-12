@@ -91,3 +91,12 @@
   appearance: slider-vertical;
   -webkit-appearance: slider-vertical;
 }
+
+.optionVolume {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 2rem;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}

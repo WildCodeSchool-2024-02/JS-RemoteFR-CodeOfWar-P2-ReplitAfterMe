@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { useMusic } from "../context/MusicContext";
 
-import url from "../assets/music/Mousse.mp3";
 import volumeOff from "../assets/images/volume-off.png";
 import volumeUp from "../assets/images/volume-up.png";
 
 export default function AudioPlayer() {
-  const [audio] = useState(new Audio(url));
+  const { audio } = useMusic();
   const [volume, setVolume] = useState(0);
-
-  console.info(volume);
 
   // contrôle du son
 
@@ -29,7 +27,7 @@ export default function AudioPlayer() {
   };
 
   return (
-    <div>
+    <div className="optionVolume">
       {/* changement de l'icone volume */}
       {volume === 0 ? (
         <img
@@ -51,7 +49,7 @@ export default function AudioPlayer() {
         className="volume-range vrange"
         id="musicSlider"
         type="range"
-        min={0.01}
+        min={0}
         max={1}
         step={0.01}
         value={volume}
