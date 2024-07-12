@@ -2,12 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
+
 import videoBg from "../assets/Cloud.mp4";
 
 import avatar from "../assets/images/avatar.png";
+import atouts from "../data/atout";
+
 import Question from "./Question";
 import Atout from "./Atout";
-import atouts from "../data/atout";
 import Timer from "./Timer";
 import AnswerButton from "./AnswerButton";
 import PopUp from "./PopUp";
@@ -17,15 +19,12 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
-
-  const [seconds, setSeconds] = useState(10); // état du timer
-
+  const [seconds, setSeconds] = useState(10);
   const [bonus, setBonus] = useState(0);
-
-  const maxQuestions = 10;
+  const [popUP, setPopUp] = useState(false);
 
   const data = useLoaderData();
-  const [popUP, setPopUp] = useState(false);
+  const maxQuestions = 10;
 
   const togglePopup = () => {
     setPopUp(!popUP);
@@ -42,7 +41,7 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-    setSeconds(10); // Réinitialise le timer à chaque nouvelle question
+    setSeconds(10);
   }, [data, setSeconds]);
 
   useEffect(() => {
