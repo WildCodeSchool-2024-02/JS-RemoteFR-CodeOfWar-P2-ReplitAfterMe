@@ -37,7 +37,7 @@ export default function AnswerButton({
         setBonus(0);
         setQuestion();
         setNumQuestion(numQuestion + 1);
-        setSeconds(10); // réinitialise le timer à chaque questions
+        setSeconds(10);
       }, 2000);
     } else {
       setClassName("redButton");
@@ -45,7 +45,7 @@ export default function AnswerButton({
         setQuestion();
         setBonus(0);
         setNumQuestion(numQuestion + 1);
-        setSeconds(10); // réinitialise le timer à chaque questions
+        setSeconds(10);
       }, 2000);
     }
   };
