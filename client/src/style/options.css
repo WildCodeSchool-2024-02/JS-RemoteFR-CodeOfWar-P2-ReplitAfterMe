@@ -88,6 +88,6 @@
 }
 
 .volume-range {
-  appearance: slider-vertical;
-  -webkit-appearance: slider-vertical;
+  writing-mode: vertical-lr;
+  direction: rtl;
 }
