@@ -14,6 +14,8 @@ export default function AnswerButton({
   bonus,
   setBonus,
   randomAnswer,
+  disable,
+  setDisable,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
@@ -29,12 +31,15 @@ export default function AnswerButton({
     setTimeout(() => {
       setShowImage(false);
     }, 1000);
+    setDisable(!disable);
+
     if (dataName === goodAnswer) {
       setClassName("greenButton");
       setPoints(points + 1000 + bonus);
       setTimeout(() => {
         setBonus(0);
         setQuestion();
+        setDisable(disable);
         setNumQuestion(numQuestion + 1);
       }, 2000);
     } else {
@@ -42,6 +47,7 @@ export default function AnswerButton({
       setTimeout(() => {
         setQuestion();
         setBonus(0);
+        setDisable(disable);
         setNumQuestion(numQuestion + 1);
       }, 2000);
     }
@@ -49,7 +55,12 @@ export default function AnswerButton({
 
   return (
     <div className="animation-button">
-      <button className={className} type="button" onClick={handleClick}>
+      <button
+        className={className}
+        type="button"
+        onClick={handleClick}
+        disabled={disable}
+      >
         {dataName}
       </button>
       {showImage && (
@@ -82,4 +93,6 @@ AnswerButton.propTypes = {
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
   randomAnswer: PropTypes.string,
+  disable: PropTypes.bool.isRequired,
+  setDisable: PropTypes.func.isRequired,
 };
