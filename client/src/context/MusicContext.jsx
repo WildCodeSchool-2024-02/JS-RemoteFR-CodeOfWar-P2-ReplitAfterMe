@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 import PropTypes from "prop-types";
 
 import url from "../assets/music/Mousse.mp3";
@@ -6,11 +6,11 @@ import url from "../assets/music/Mousse.mp3";
 const MusicContext = createContext();
 
 export function MusicProvider({ children }) {
-  const [audio] = useState(new Audio(url));
+  const [audioM] = useState(new Audio(url));
+  const audio = useMemo(() => ({ audioM }), [audioM]);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <MusicContext.Provider value={{ audio }}>{children}</MusicContext.Provider>
+    <MusicContext.Provider value={audio}>{children}</MusicContext.Provider>
   );
 }
 

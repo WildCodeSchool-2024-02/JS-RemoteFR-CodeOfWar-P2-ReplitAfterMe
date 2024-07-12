@@ -5,17 +5,17 @@ import volumeOff from "../assets/images/volume-off.png";
 import volumeUp from "../assets/images/volume-up.png";
 
 export default function AudioPlayer() {
-  const { audio } = useMusic();
+  const { audioM } = useMusic();
   const [volume, setVolume] = useState(0);
 
   // contrôle du son
 
   const start = () => {
-    audio.play();
+    audioM.play();
   };
 
   const pause = () => {
-    audio.pause();
+    audioM.pause();
   };
 
   const changeVolume = () => {
@@ -55,7 +55,7 @@ export default function AudioPlayer() {
         value={volume}
         onChange={(event) => {
           setVolume(event.target.value);
-          audio.volume = volume;
+          audioM.volume = volume;
           changeVolume();
         }}
       />
