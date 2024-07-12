@@ -2,14 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
+
 import avatar from "../assets/images/avatar.png";
+import atouts from "../data/atout";
+
 import Question from "./Question";
 import Atout from "./Atout";
-import atouts from "../data/atout";
 import Timer from "./Timer";
-
 import AnswerButton from "./AnswerButton";
-
 import PopUp from "./PopUp";
 
 function Quizz() {
@@ -17,15 +17,12 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
-
   const [seconds, setSeconds] = useState(10);
-
   const [bonus, setBonus] = useState(0);
-
-  const maxQuestions = 10;
+  const [popUP, setPopUp] = useState(false);
 
   const data = useLoaderData();
-  const [popUP, setPopUp] = useState(false);
+  const maxQuestions = 10;
 
   const togglePopup = () => {
     setPopUp(!popUP);
