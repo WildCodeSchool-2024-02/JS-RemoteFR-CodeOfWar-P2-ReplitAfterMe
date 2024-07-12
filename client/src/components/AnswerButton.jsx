@@ -78,8 +78,13 @@ AnswerButton.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setNumQuestion: PropTypes.func.isRequired,
   numQuestion: PropTypes.number.isRequired,
-  setSeconds: PropTypes.func.isRequired,
+  setSeconds: PropTypes.func,
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
-  randomAnswer: PropTypes.string.isRequired,
+  randomAnswer: PropTypes.string,
+};
+
+AnswerButton.defaultProps = {
+  setSeconds: PropTypes.null,
+  randomAnswer: PropTypes.null,
 };

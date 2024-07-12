@@ -18,7 +18,7 @@ function Quizz() {
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
 
-  const [seconds, setSeconds] = useState(10); // état du timer
+  const [seconds, setSeconds] = useState(10);
 
   const [bonus, setBonus] = useState(0);
 
@@ -42,7 +42,7 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-    setSeconds(10); // Réinitialise le timer à chaque nouvelle question
+    setSeconds(10);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -103,7 +103,6 @@ function Quizz() {
         maxQuestions={maxQuestions}
       />
       <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
-      {/* passage  l'état du timer en props */}
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton
