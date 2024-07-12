@@ -1,13 +1,54 @@
+:root {
+  /* références couleurs */
+
+  --primary-color: #ffbb33;
+  --secondary-color: blue;
+  --white-color: #e5e2e2;
+  --dark-color: #0d0c0c;
+  --red-color: #8b0000;
+  --first-grey: #464646;
+  --first-green: #05650c;
+}
+
 .timer {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .time {
   text-align: center;
   font-size: 2rem;
 }
-input {
-  width: 100%;
-  margin: 10px 0;
+
+.timer-input {
+  width: 80%;
+  margin: 10px;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  background: var(--first-grey);
+  border-radius: 16px;
+  outline: none;
+  opacity: 1;
+}
+.timer-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+.timer-input::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
 }
