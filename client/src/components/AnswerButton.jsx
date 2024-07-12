@@ -70,6 +70,11 @@ export default function AnswerButton({
   );
 }
 
+AnswerButton.defaultProps = {
+  setSeconds: PropTypes.null,
+  randomAnswer: PropTypes.null,
+};
+
 AnswerButton.propTypes = {
   dataName: PropTypes.string.isRequired,
   goodAnswer: PropTypes.string.isRequired,
@@ -82,9 +87,4 @@ AnswerButton.propTypes = {
   bonus: PropTypes.number.isRequired,
   setBonus: PropTypes.func.isRequired,
   randomAnswer: PropTypes.string,
-};
-
-AnswerButton.defaultProps = {
-  setSeconds: PropTypes.null,
-  randomAnswer: PropTypes.null,
 };
