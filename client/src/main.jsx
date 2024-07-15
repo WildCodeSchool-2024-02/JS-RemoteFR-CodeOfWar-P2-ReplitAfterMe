@@ -13,11 +13,6 @@ import HomePage from "./components/HomePage";
 
 import "./style/app.css";
 
-const countryData = async () => {
-  const data = await axios.get(request[0].API);
-  return data.data;
-};
-
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -28,9 +23,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/quizz/chapter:chapter",
+        path: `/quizz/:chapter`,
         element: <Quizz />,
-        loader: countryData,
+        loader: async ({ params }) => {
+          const data = await axios.get(request[params.chapter].API);
+          return data.data;
+        },
       },
       {
         path: "/story",

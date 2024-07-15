@@ -22,7 +22,6 @@ function Quizz() {
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
   const { chapter, setChapter } = useContext(ChapterContext);
-
   const data = useLoaderData();
   const maxQuestions = 10;
 
