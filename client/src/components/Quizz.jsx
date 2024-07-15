@@ -1,5 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { ChapterContext } from "../contexts/ChapterContext";
 
 import "../style/quizz.css";
 
@@ -20,6 +21,7 @@ function Quizz() {
   const [seconds, setSeconds] = useState(10);
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
+  const { chapter, setChapter } = useContext(ChapterContext);
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -71,11 +73,24 @@ function Quizz() {
   };
 
   if (numQuestion >= maxQuestions) {
+    if (points >= 5000) {
+      return (
+        <div>
+          Vous avez obtenu : {points} points ! Le fugitif est tout proche...
+          <Link to="/">
+            <button type="button" onClick={() => setChapter(chapter + 1)}>
+              Retourner à l'accueil
+            </button>
+          </Link>
+        </div>
+      );
+    }
+
     return (
       <div>
-        Vous avez obtenu : {points} points
-        <Link to="/story">
-          <button type="button">Histoire</button>
+        Vous avez obtenu : {points} points... Le fugitif c'est enfui.
+        <Link to="/">
+          <button type="button">Retourner à l'accueil</button>
         </Link>
       </div>
     );

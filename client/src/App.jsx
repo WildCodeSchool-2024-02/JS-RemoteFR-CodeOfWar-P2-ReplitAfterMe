@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
+import ChapterProvider from "./contexts/ChapterContext";
 
 function App() {
   return (
-    <main>
-      <Outlet />
-    </main>
+    <ChapterProvider>
+      <main>
+        <Outlet />
+      </main>
+    </ChapterProvider>
   );
 }
 

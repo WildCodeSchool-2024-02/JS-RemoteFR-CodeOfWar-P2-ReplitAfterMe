@@ -14,9 +14,7 @@ import HomePage from "./components/HomePage";
 import "./style/app.css";
 
 const countryData = async () => {
-  const data = await axios.get(
-    request[Math.floor(Math.random() * request.length)].API
-  );
+  const data = await axios.get(request[0].API);
   return data.data;
 };
 
@@ -30,7 +28,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/quizz",
+        path: "/quizz/chapter:chapter",
         element: <Quizz />,
         loader: countryData,
       },
