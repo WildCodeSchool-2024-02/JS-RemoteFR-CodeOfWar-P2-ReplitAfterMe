@@ -24,8 +24,9 @@ export default function Timer({ seconds, setSeconds }) {
 
   return (
     <div className="timer">
-      <div className="time">{seconds}s</div>
+      <div className="time">{seconds}</div>
       <input
+        className="timer-input"
         type="range"
         min="0"
         max="10"
