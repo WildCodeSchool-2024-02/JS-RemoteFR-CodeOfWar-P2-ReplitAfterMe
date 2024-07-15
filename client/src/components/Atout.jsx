@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "../style/atout.css";
 
 export default function Atout({
   name,
@@ -23,8 +24,8 @@ export default function Atout({
   };
 
   return (
-    <button type="button" onClick={handleClick}>
-      <img src={image} alt={imageAlt} />;
+    <button className="button-atout" type="button" onClick={handleClick}>
+      <img src={image} alt={imageAlt} className="img-atout" />
     </button>
   );
 }
