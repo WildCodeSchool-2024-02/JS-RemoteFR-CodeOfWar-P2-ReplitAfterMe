@@ -99,7 +99,13 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
-      <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
+      <Timer
+        seconds={seconds}
+        setSeconds={setSeconds}
+        setPoints={setPoints}
+        points={points}
+        setQuestion={setQuestion}
+      />
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton
