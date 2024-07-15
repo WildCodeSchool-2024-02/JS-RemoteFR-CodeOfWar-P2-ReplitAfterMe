@@ -16,6 +16,8 @@ export default function AnswerButton({
   randomAnswer,
   disable,
   setDisable,
+  answerClass,
+  setAnswerClass,
 }) {
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
@@ -25,6 +27,12 @@ export default function AnswerButton({
       setClassName("orange-button");
     }
   }, [randomAnswer, dataName]);
+
+  useEffect(() => {
+    if (goodAnswer === dataName && className !== "greenButton") {
+      setClassName(answerClass);
+    }
+  }, [answerClass, goodAnswer, dataName, className]);
 
   const handleClick = () => {
     setShowImage(true);
@@ -44,14 +52,21 @@ export default function AnswerButton({
       }, 2000);
     } else {
       setClassName("redButton");
+      setAnswerClass("greenButton");
       setTimeout(() => {
         setQuestion();
         setBonus(0);
+        setAnswerClass("button");
         setDisable(disable);
         setNumQuestion(numQuestion + 1);
       }, 2000);
     }
   };
+
+  // useEffect(() =>{
+  //   if (goodAnswer === dataName) {
+  //     setClassName("green-button");
+  //   }},[handleClick, dataName, goodAnswer])
 
   return (
     <div className="animation-button">
@@ -95,4 +110,6 @@ AnswerButton.propTypes = {
   randomAnswer: PropTypes.string,
   disable: PropTypes.bool.isRequired,
   setDisable: PropTypes.func.isRequired,
+  answerClass: PropTypes.string.isRequired,
+  setAnswerClass: PropTypes.func.isRequired,
 };
