@@ -22,6 +22,9 @@ function Quizz() {
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
   const { chapter, setChapter } = useContext(ChapterContext);
+  const [disable, setDisable] = useState(false);
+  const [answerClass, setAnswerClass] = useState("button");
+
   const data = useLoaderData();
   const maxQuestions = 10;
 
@@ -128,6 +131,10 @@ function Quizz() {
             bonus={bonus}
             setBonus={setBonus}
             randomAnswer={randomAnswer}
+            disable={disable}
+            setDisable={setDisable}
+            answerClass={answerClass}
+            setAnswerClass={setAnswerClass}
           />
         ))}
       </div>

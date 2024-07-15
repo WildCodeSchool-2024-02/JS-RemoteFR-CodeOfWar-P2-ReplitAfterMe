@@ -21,6 +21,10 @@ footer {
     background-color 0.3s;
 }
 
+.button-atout-hidden {
+  display: none;
+}
+
 .button-atout::before {
   content: "";
   position: absolute;
