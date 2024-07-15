@@ -13,7 +13,7 @@ import "./style/app.css";
 
 const countryData = async () => {
   const data = await axios.get(
-    "https://restcountries.com/v3.1/region/europe?fields=flags,name"
+    "https://restcountries.com/v3.1/region/asia?fields=flags,name"
   );
   return data.data;
 };
