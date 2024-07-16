@@ -20,7 +20,7 @@ export default function HomePage() {
       <div className="linksContainer">
         <ul className="links">
           <li>
-            <Link to="/quizz" className="play">
+            <Link to="/intro" className="play">
               JOUER
             </Link>
           </li>

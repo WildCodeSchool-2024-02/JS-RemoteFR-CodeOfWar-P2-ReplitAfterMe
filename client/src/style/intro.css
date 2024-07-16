@@ -1,0 +1,136 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.paraph1 {
+  margin: 1rem;
+  line-height: 1.18;
+  color: #0f0f0f;
+  text-shadow: 2px 2px #ceced0e5;
+  font-weight: bold;
+  font-size: 1.1em;
+  letter-spacing: 0.04em;
+}
+.intro h1 {
+  font-size: 2em;
+  color: rgb(237, 233, 233);
+  display: flex;
+  align-items: center;
+  text-shadow: 3px 3px black;
+}
+
+.pulse-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.pulse {
+  width: 70px;
+  height: 70px;
+  box-shadow:
+    inset 0 0 40px #cdd5d8,
+    0 0 50px #bdc9ce;
+  border-radius: 50%;
+  border: 1px solid #0d0d0e;
+  background: url(../assets/images/earth.png);
+  background-size: cover;
+  animation: animateEarth 10s linear infinite;
+}
+
+@keyframes animateEarth {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 360px;
+  }
+}
+
+.rain {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.rain-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url(../assets/images/photobw.png);
+  z-index: 0;
+  background-position: top;
+  background-color: #9b9b9bd4;
+}
+
+.raindrop {
+  position: fixed;
+  bottom: 100%;
+  width: 2px;
+  height: 45px;
+  background: #b3b3b3;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.firstIntro {
+  padding: 1.2rem;
+  margin-top: 0.5rem;
+  margin: 0 auto;
+  background-color: #9b9b9bd4;
+  border-radius: 50px 50px 50px 0;
+  width: 85%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  box-shadow: 2px 5px 8px 3px #bababa;
+  font-weight: bold;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+
+.introGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.introGame img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1rem;
+  padding-left: 20px;
+}
+
+.playGame {
+  padding: 0.5rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+}
