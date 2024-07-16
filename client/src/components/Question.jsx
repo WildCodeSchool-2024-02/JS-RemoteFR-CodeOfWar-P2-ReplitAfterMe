@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import { ChapterContext } from "../contexts/ChapterContext";
 
 import "../style/question.css";
 
@@ -8,6 +10,8 @@ export default function Question({
   numQuestion,
   maxQuestions,
 }) {
+  const { chapter } = useContext(ChapterContext);
+
   return (
     <>
       <div className="question">
@@ -16,7 +20,7 @@ export default function Question({
       </div>
       <div className="chapitre">
         <p>
-          Chapitre 1, question {numQuestion + 1}/{maxQuestions}
+          Chapitre {chapter + 1}, question {numQuestion + 1}/{maxQuestions}
         </p>
       </div>
     </>
