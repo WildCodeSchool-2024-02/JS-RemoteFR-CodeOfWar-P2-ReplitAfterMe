@@ -1,0 +1,124 @@
+.intro-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* Rain falling and background image */
+.rain-background {
+  position: fixed;
+  width: 100svw;
+  height: 100svh;
+  background-image: url(../assets/images/photobw.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-color: #9b9b9bd4;
+  opacity: 0.6;
+}
+.raindrop {
+  position: fixed;
+  bottom: 100%;
+  width: 2px;
+  height: 45px;
+  background: #b3b3b3;
+  animation: fall linear infinite;
+}
+/* -----------------*/
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+.intro-logo {
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.paragraphe-intro {
+  margin: 2rem;
+  /* text-align: justify; */
+  line-height: 1.18;
+  color: #0f0f0f;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+.intro h1 {
+  font-size: 2em;
+  color: rgb(237, 233, 233);
+  display: flex;
+  align-items: center;
+  text-shadow: 3px 3px black;
+}
+
+.pulse-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.pulse {
+  width: 70px;
+  height: 70px;
+  box-shadow:
+    inset 0 0 40px #cdd5d8,
+    0 0 50px #bdc9ce;
+  border-radius: 50%;
+  border: 1px solid #0d0d0e;
+  background: url(../assets/images/earth.png);
+  background-size: cover;
+  animation: animateEarth 10s linear infinite;
+}
+
+@keyframes animateEarth {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 360px;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+.firstIntro {
+  margin: 0 2rem;
+  padding: 2rem;
+  background-color: #9b9b9bd4;
+  border-radius: 50px;
+  font-size: 1rem;
+  box-shadow: 2px 5px 8px 3px #bababa;
+  font-weight: bold;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+
+.introGame {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.introGame img {
+  width: 100px;
+  height: 100px;
+}
+
+.playGame {
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  background-color: black;
+  border-radius: 8px;
+  color: #ede6e6d4;
+  text-transform: uppercase;
+}

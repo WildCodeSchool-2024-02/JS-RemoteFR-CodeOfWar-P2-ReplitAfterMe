@@ -11,6 +11,7 @@ import App from "./App";
 import Quizz from "./components/Quizz";
 import Story from "./components/Story";
 import HomePage from "./components/HomePage";
+import Intro from "./components/Intro";
 
 import "./style/app.css";
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/intro",
+        element: <Intro />,
       },
       {
         path: `/quizz/:chapter`,
