@@ -74,11 +74,21 @@ function Quizz() {
     }
   };
 
+  const HandleClick = () => {
+    setPoints(0);
+    setChapter(chapter + 1);
+  };
+  console.info(chapter);
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
       return (
         <div>
           Vous avez obtenu : {points} points ! Le fugitif est tout proche...
+          <Link to="/story">
+            <button type="button" onClick={() => HandleClick}>
+              Chapitre suivant
+            </button>
+          </Link>
           <Link to="/">
             <button type="button" onClick={() => setChapter(chapter + 1)}>
               Retourner à l'accueil
