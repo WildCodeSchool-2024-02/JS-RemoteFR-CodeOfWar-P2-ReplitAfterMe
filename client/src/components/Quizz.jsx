@@ -24,6 +24,7 @@ function Quizz() {
   const { chapter, setChapter } = useContext(ChapterContext);
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
+  const [randomAnswer, setRandomAnswer] = useState(null);
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -60,8 +61,6 @@ function Quizz() {
     reduceAnswerArray.push(goodAnswer, secondAnswer);
     setAnswerArray(reduceAnswerArray);
   };
-
-  const [randomAnswer, setRandomAnswer] = useState(null);
 
   const call = () => {
     const random = Math.random();
