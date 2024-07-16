@@ -1,5 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef, useContext } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { useDifficulty } from "../../contexts/DifficultyContext";
+
+import { ChapterContext } from "../contexts/ChapterContext";
 
 import "../style/quizz.css";
 
@@ -17,9 +20,13 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
+  const { chapter, setChapter } = useContext(ChapterContext);
+  const [disable, setDisable] = useState(false);
+  const [answerClass, setAnswerClass] = useState("button");
+  const [randomAnswer, setRandomAnswer] = useState(null);
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -27,6 +34,8 @@ function Quizz() {
   const togglePopup = () => {
     setPopUp(!popUP);
   };
+
+  const secondsRef = useRef(seconds);
 
   const setQuestion = useCallback(() => {
     const nextAnswerArray = [];
@@ -39,7 +48,7 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-    setSeconds(10);
+    setSeconds(secondsRef.current);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -57,25 +66,37 @@ function Quizz() {
     setAnswerArray(reduceAnswerArray);
   };
 
-  const [randomAnswer, setRandomAnswer] = useState(null);
-
   const call = () => {
     const random = Math.random();
     if (random <= 0.75) {
-      setRandomAnswer(goodAnswer.name.common);
+      setRandomAnswer(goodAnswer.translations.fra.common);
     } else {
       setRandomAnswer(
-        answerArray[Math.floor(Math.random() * answerArray.length)].name.common
+        answerArray[Math.floor(Math.random() * answerArray.length)].translations
+          .fra.common
       );
     }
   };
 
   if (numQuestion >= maxQuestions) {
+    if (points >= 5000) {
+      return (
+        <div>
+          Vous avez obtenu : {points} points ! Le fugitif est tout proche...
+          <Link to="/">
+            <button type="button" onClick={() => setChapter(chapter + 1)}>
+              Retourner à l'accueil
+            </button>
+          </Link>
+        </div>
+      );
+    }
+
     return (
       <div>
-        Vous avez obtenu : {points} points
-        <Link to="/story">
-          <button type="button">Histoire</button>
+        Vous avez obtenu : {points} points... Le fugitif s'est enfui.
+        <Link to="/">
+          <button type="button">Retourner à l'accueil</button>
         </Link>
       </div>
     );
@@ -99,14 +120,20 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
-      <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
-      {/* passage  l'état du timer en props */}
+
+      <Timer
+        seconds={seconds}
+        setSeconds={setSeconds}
+        setPoints={setPoints}
+        points={points}
+        setQuestion={setQuestion}
+      />
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton
-            key={country.name.common}
-            dataName={country.name.common}
-            goodAnswer={goodAnswer.name.common}
+            key={country.translations.fra.common}
+            dataName={country.translations.fra.common}
+            goodAnswer={goodAnswer.translations.fra.common}
             setPoints={setPoints}
             points={points}
             setQuestion={setQuestion}
@@ -115,6 +142,10 @@ function Quizz() {
             bonus={bonus}
             setBonus={setBonus}
             randomAnswer={randomAnswer}
+            disable={disable}
+            setDisable={setDisable}
+            answerClass={answerClass}
+            setAnswerClass={setAnswerClass}
           />
         ))}
       </div>

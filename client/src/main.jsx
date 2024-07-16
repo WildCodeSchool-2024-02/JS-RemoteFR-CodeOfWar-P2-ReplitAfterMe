@@ -5,19 +5,14 @@ import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MusicProvider } from "./contexts/MusicContext";
 
+import DifficultyProvider from "../contexts/DifficultyContext";
+import request from "./data/request";
 import App from "./App";
 import Quizz from "./components/Quizz";
 import Story from "./components/Story";
 import HomePage from "./components/HomePage";
 
 import "./style/app.css";
-
-const countryData = async () => {
-  const data = await axios.get(
-    "https://restcountries.com/v3.1/region/africa?fields=flags,name"
-  );
-  return data.data;
-};
 
 const router = createBrowserRouter([
   {
@@ -29,9 +24,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/quizz",
+        path: `/quizz/:chapter`,
         element: <Quizz />,
-        loader: countryData,
+        loader: async ({ params }) => {
+          const data = await axios.get(request[params.chapter].API);
+          return data.data;
+        },
       },
       {
         path: "/story",
@@ -46,7 +44,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <MusicProvider>
-      <RouterProvider router={router} />
+      <DifficultyProvider>
+        <RouterProvider router={router} />
+      </DifficultyProvider>
     </MusicProvider>
   </React.StrictMode>
 );

@@ -1,0 +1,46 @@
+.img-atout {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  padding: 0.4rem;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+.button-atout {
+  position: relative;
+  overflow: hidden;
+
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: white;
+  transition:
+    border-color 0.3s,
+    background-color 0.3s;
+}
+
+.button-atout-hidden {
+  display: none;
+}
+
+.button-atout::before {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(173, 216, 230, 0.5);
+  transition: bottom 2s;
+}
+
+.button-atout:active::before {
+  bottom: 0;
+}
+
+.button-atout:active {
+  border-color: rgba(173, 216, 230, 0.5);
+  background-color: rgba(173, 216, 230, 0.5);
+}
