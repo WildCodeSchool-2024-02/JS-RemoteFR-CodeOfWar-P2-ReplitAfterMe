@@ -66,10 +66,11 @@ function Quizz() {
   const call = () => {
     const random = Math.random();
     if (random <= 0.75) {
-      setRandomAnswer(goodAnswer.name.common);
+      setRandomAnswer(goodAnswer.translations.fra.common);
     } else {
       setRandomAnswer(
-        answerArray[Math.floor(Math.random() * answerArray.length)].name.common
+        answerArray[Math.floor(Math.random() * answerArray.length)].translations
+          .fra.common
       );
     }
   };
@@ -90,7 +91,7 @@ function Quizz() {
 
     return (
       <div>
-        Vous avez obtenu : {points} points... Le fugitif c'est enfui.
+        Vous avez obtenu : {points} points... Le fugitif s'est enfui.
         <Link to="/">
           <button type="button">Retourner à l'accueil</button>
         </Link>
@@ -120,9 +121,9 @@ function Quizz() {
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton
-            key={country.name.common}
-            dataName={country.name.common}
-            goodAnswer={goodAnswer.name.common}
+            key={country.translations.fra.common}
+            dataName={country.translations.fra.common}
+            goodAnswer={goodAnswer.translations.fra.common}
             setPoints={setPoints}
             points={points}
             setQuestion={setQuestion}
