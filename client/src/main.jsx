@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MusicProvider } from "./contexts/MusicContext";
 
 import App from "./App";
 import Quizz from "./components/Quizz";
@@ -44,6 +45,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MusicProvider>
+      <RouterProvider router={router} />
+    </MusicProvider>
   </React.StrictMode>
 );

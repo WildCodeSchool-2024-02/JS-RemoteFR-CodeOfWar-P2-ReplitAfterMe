@@ -7,7 +7,11 @@ const MusicContext = createContext();
 
 export function MusicProvider({ children }) {
   const [audioM] = useState(new Audio(url));
-  const audio = useMemo(() => ({ audioM }), [audioM]);
+  const [volume, setVolume] = useState(0);
+  const audio = useMemo(
+    () => ({ audioM, volume, setVolume }),
+    [audioM, volume]
+  );
 
   return (
     <MusicContext.Provider value={audio}>{children}</MusicContext.Provider>

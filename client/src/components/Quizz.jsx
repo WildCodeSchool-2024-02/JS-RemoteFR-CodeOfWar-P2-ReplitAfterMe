@@ -3,8 +3,6 @@ import { useLoaderData, Link } from "react-router-dom";
 
 import "../style/quizz.css";
 
-import videoBg from "../assets/Cloud.mp4";
-
 import avatar from "../assets/images/avatar.png";
 import atouts from "../data/atout";
 
@@ -88,58 +86,55 @@ function Quizz() {
   }
 
   return (
-    <>
-      <video src={videoBg} autoPlay muted loop className="video" />
-      <main className="quizz-container">
-        <header className="header">
-          <div aria-hidden="true" onClick={togglePopup}>
-            <img src={avatar} alt="avatar de profil" />
-          </div>
-          <button type="button">{points} pts</button>
-        </header>
-        <Question
-          dataFlags={goodAnswer.flags.svg}
-          dataAlt={goodAnswer.flags.alt}
-          numQuestion={numQuestion}
-          maxQuestions={maxQuestions}
-        />
-        <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
-        {/* passage  l'état du timer en props */}
-        <div className="answer-div">
-          {answerArray.map((country) => (
-            <AnswerButton
-              key={country.name.common}
-              dataName={country.name.common}
-              goodAnswer={goodAnswer.name.common}
-              setPoints={setPoints}
-              points={points}
-              setQuestion={setQuestion}
-              setNumQuestion={setNumQuestion}
-              numQuestion={numQuestion}
-              bonus={bonus}
-              setBonus={setBonus}
-              randomAnswer={randomAnswer}
-            />
-          ))}
+    <main className="quizz-container">
+      <header className="header">
+        <div aria-hidden="true" onClick={togglePopup}>
+          <img src={avatar} alt="avatar de profil" />
         </div>
-        {popUP && <PopUp handleClose={togglePopup} />}
-        <footer className="footer">
-          {atouts.map((atout) => (
-            <Atout
-              key={atout.name}
-              name={atout.name}
-              image={atout.img.src}
-              imageAlt={atout.img.alt}
-              bonus={bonus}
-              setBonus={setBonus}
-              setQuestion={setQuestion}
-              setArray={setArray}
-              call={call}
-            />
-          ))}
-        </footer>
-      </main>
-    </>
+        <button type="button">{points} pts</button>
+      </header>
+      <Question
+        dataFlags={goodAnswer.flags.svg}
+        dataAlt={goodAnswer.flags.alt}
+        numQuestion={numQuestion}
+        maxQuestions={maxQuestions}
+      />
+      <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
+      {/* passage  l'état du timer en props */}
+      <div className="answer-div">
+        {answerArray.map((country) => (
+          <AnswerButton
+            key={country.name.common}
+            dataName={country.name.common}
+            goodAnswer={goodAnswer.name.common}
+            setPoints={setPoints}
+            points={points}
+            setQuestion={setQuestion}
+            setNumQuestion={setNumQuestion}
+            numQuestion={numQuestion}
+            bonus={bonus}
+            setBonus={setBonus}
+            randomAnswer={randomAnswer}
+          />
+        ))}
+      </div>
+      {popUP && <PopUp handleClose={togglePopup} />}
+      <footer className="footer">
+        {atouts.map((atout) => (
+          <Atout
+            key={atout.name}
+            name={atout.name}
+            image={atout.img.src}
+            imageAlt={atout.img.alt}
+            bonus={bonus}
+            setBonus={setBonus}
+            setQuestion={setQuestion}
+            setArray={setArray}
+            call={call}
+          />
+        ))}
+      </footer>
+    </main>
   );
 }
 export default Quizz;
