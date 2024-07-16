@@ -22,8 +22,6 @@ export default function AnswerButton({
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
 
-  console.info(className);
-
   useEffect(() => {
     if (randomAnswer === dataName) {
       setClassName("orange-button");
