@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
-import detective from "../assets/images/detective.png";
+import detective from "../assets/images/detective-2.png";
 import Rain from "./Rain";
 import "../style/intro.css";
 
 export default function Intro() {
   return (
-    <div className="Intro1">
+    <div className="intro-container">
       <Rain count={100} />
-      <div className="rain">
-        <div className="intro">
-          <h1>
-            INTR
-            <span className="pulse-container">
-              <span className="pulse" />
-            </span>
-          </h1>
-        </div>
-        <div className="paraph1">
+      <div className="intro-logo">
+        <h1>INTR </h1>
+        <span className="pulse-container">
+          <span className="pulse" />
+        </span>
+      </div>
+      <div className="text">
+        <div className="paragraphe-intro">
           <p>
             Année 3452, l'inspecteur " User.name " , inspecteur de renom est
             invité par la Centrale afin d'élucider l'affaire de ces deux
@@ -37,10 +35,10 @@ export default function Intro() {
             les dégâts! Entendu, allons voir ça de plus près. "
           </p>
           <div className="introGame">
+            <img src={detective} alt="detective" />
             <Link to="/quizz" className="playGame">
               Jouer
             </Link>
-            <img src={detective} alt="detective" />
           </div>
         </div>
       </div>

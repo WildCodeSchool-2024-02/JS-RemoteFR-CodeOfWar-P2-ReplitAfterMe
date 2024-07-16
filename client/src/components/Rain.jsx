@@ -4,7 +4,6 @@ import "../style/intro.css";
 
 export default function Rain({ count }) {
   const [raindrops, setRaindrops] = useState([]);
-  console.info(count);
   useEffect(() => {
     const drops = Array.from({ length: count }).map((_, index) => ({
       id: index,
@@ -16,7 +15,7 @@ export default function Rain({ count }) {
   }, [count]);
 
   return (
-    <div className="rain">
+    <>
       <div className="rain-background" />
       {raindrops.map((drop) => (
         <div
@@ -29,7 +28,7 @@ export default function Rain({ count }) {
           }}
         />
       ))}
-    </div>
+    </>
   );
 }
 
