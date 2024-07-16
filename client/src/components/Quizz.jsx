@@ -1,5 +1,7 @@
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback, useRef, useContext } from "react";
 import { useLoaderData, Link } from "react-router-dom";
+import { useDifficulty } from "../../contexts/DifficultyContext";
+
 import { ChapterContext } from "../contexts/ChapterContext";
 
 import "../style/quizz.css";
@@ -18,7 +20,7 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
   const { chapter, setChapter } = useContext(ChapterContext);
@@ -33,6 +35,8 @@ function Quizz() {
     setPopUp(!popUP);
   };
 
+  const secondsRef = useRef(seconds);
+
   const setQuestion = useCallback(() => {
     const nextAnswerArray = [];
     for (let i = 0; i < 4; i += 1) {
@@ -44,7 +48,7 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-    setSeconds(10);
+    setSeconds(secondsRef.current);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -116,7 +120,14 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
-      <Timer seconds={seconds} setSeconds={setSeconds} />{" "}
+
+      <Timer
+        seconds={seconds}
+        setSeconds={setSeconds}
+        setPoints={setPoints}
+        points={points}
+        setQuestion={setQuestion}
+      />
       <div className="answer-div">
         {answerArray.map((country) => (
           <AnswerButton

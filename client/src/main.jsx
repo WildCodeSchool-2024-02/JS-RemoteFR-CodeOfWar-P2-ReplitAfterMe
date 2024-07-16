@@ -4,8 +4,8 @@ import axios from "axios";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import DifficultyProvider from "../contexts/DifficultyContext";
 import request from "./data/request";
-
 import App from "./App";
 import Quizz from "./components/Quizz";
 import Story from "./components/Story";
@@ -42,6 +42,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <DifficultyProvider>
+      <RouterProvider router={router} />
+    </DifficultyProvider>
   </React.StrictMode>
 );
