@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useLoaderData, Link } from "react-router-dom";
-
+import { useDifficulty } from "../../contexts/DifficultyContext";
 import "../style/quizz.css";
 
 import avatar from "../assets/images/avatar.png";
@@ -17,7 +17,7 @@ function Quizz() {
   const [answerArray, setAnswerArray] = useState([]);
   const [goodAnswer, setGoodAnswer] = useState(null);
   const [numQuestion, setNumQuestion] = useState(0);
-  const [seconds, setSeconds] = useState(10);
+  const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
 
@@ -27,6 +27,8 @@ function Quizz() {
   const togglePopup = () => {
     setPopUp(!popUP);
   };
+
+  const secondsRef = useRef(seconds);
 
   const setQuestion = useCallback(() => {
     const nextAnswerArray = [];
@@ -39,7 +41,7 @@ function Quizz() {
       nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
     setAnswerArray(nextAnswerArray);
     setGoodAnswer(nextGoodAnswer);
-    setSeconds(10);
+    setSeconds(secondsRef.current);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -99,6 +101,7 @@ function Quizz() {
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
+
       <Timer
         seconds={seconds}
         setSeconds={setSeconds}

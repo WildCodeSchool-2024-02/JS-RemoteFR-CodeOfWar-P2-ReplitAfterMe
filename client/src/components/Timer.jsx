@@ -26,7 +26,6 @@ export default function Timer({
     } else {
       setIsActive(true);
     }
-
     return () => clearInterval(interval);
   }, [isActive, seconds, setSeconds, points, setPoints, setQuestion]);
 
@@ -36,8 +35,7 @@ export default function Timer({
       <input
         className="timer-input"
         type="range"
-        min="0"
-        max="10"
+        max="30"
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
       />

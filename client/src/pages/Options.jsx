@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import AudioPlayer from "../components/AudioPlayer";
+import Difficulty from "../components/Difficulty";
 
 import "../style/options.css";
 
@@ -22,7 +23,7 @@ export default function Options({ handleClickPopUp }) {
         </ul>
         <div className="componentsPop">
           <p>Avatar</p>
-          <p>difficulté</p>
+          <Difficulty />
           <AudioPlayer />
         </div>
       </div>
