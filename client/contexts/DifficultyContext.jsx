@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 
 const DifficultyContext = createContext();
 
-export function DifficultyProvider({ children }) {
+export default function DifficultyProvider({ children }) {
   const [difficulty, setDifficulty] = useState("easy");
   const [seconds, setSeconds] = useState(10);
 
