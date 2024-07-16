@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MusicProvider } from "./contexts/MusicContext";
 
 import DifficultyProvider from "../contexts/DifficultyContext";
 import request from "./data/request";
@@ -42,8 +43,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <DifficultyProvider>
-      <RouterProvider router={router} />
-    </DifficultyProvider>
+    <MusicProvider>
+      <DifficultyProvider>
+        <RouterProvider router={router} />
+      </DifficultyProvider>
+    </MusicProvider>
   </React.StrictMode>
 );
