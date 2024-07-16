@@ -43,7 +43,6 @@
   /* text-align: justify; */
   line-height: 1.18;
   color: #0f0f0f;
-  /* text-shadow: 2px 2px #ceced0e5; */
   font-weight: bold;
   font-size: 1rem;
   letter-spacing: 0.04em;
@@ -86,10 +85,6 @@
   }
 }
 
-/* .rain {
-  display: flex;
-  flex-direction: column;
-} */
 .text {
   display: flex;
   flex-direction: column;

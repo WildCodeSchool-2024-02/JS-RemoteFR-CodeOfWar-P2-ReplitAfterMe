@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+// import { useState, useContext } from "react";
 import { useState } from "react";
+// import { ChapterContext } from "../contexts/ChapterContext";
 
 import "../style/homePage.css";
 import Options from "../pages/Options";
@@ -10,6 +12,8 @@ export default function HomePage() {
   const handleClickPopUp = () => {
     setSeen(!seen);
   };
+  // const { chapter } = useContext(ChapterContext);
+  // const { chapter: chapterParam } = useParams;
 
   return (
     <main className="home-container">

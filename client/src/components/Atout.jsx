@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import "../style/atout.css";
+import { useState } from "react";
 
 export default function Atout({
   name,
@@ -11,6 +12,12 @@ export default function Atout({
   call,
   setArray,
 }) {
+  const [hidden, setHidden] = useState("button-atout");
+
+  const hiddenAssets = () => {
+    setHidden("button-atout-hidden");
+  };
+
   const handleClick = () => {
     if (name === "Double") {
       setBonus(bonus + 1000);
@@ -24,7 +31,14 @@ export default function Atout({
   };
 
   return (
-    <button className="button-atout" type="button" onClick={handleClick}>
+    <button
+      className={hidden}
+      type="button"
+      onClick={function fn() {
+        handleClick();
+        hiddenAssets();
+      }}
+    >
       <img src={image} alt={imageAlt} className="img-atout" />
     </button>
   );

@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import "../style/timer.css";
 import PropTypes from "prop-types";
 
-export default function Timer({ seconds, setSeconds }) {
+export default function Timer({
+  seconds,
+  setSeconds,
+  setQuestion,
+  points,
+  setPoints,
+}) {
   const [isActive, setIsActive] = useState(true);
 
   useEffect(() => {
@@ -15,12 +21,13 @@ export default function Timer({ seconds, setSeconds }) {
 
     if (seconds === 0) {
       setIsActive(false);
+      setPoints(points + 0);
+      setQuestion();
     } else {
       setIsActive(true);
     }
-
     return () => clearInterval(interval);
-  }, [isActive, seconds, setSeconds]);
+  }, [isActive, seconds, setSeconds, points, setPoints, setQuestion]);
 
   return (
     <div className="timer">
@@ -28,8 +35,7 @@ export default function Timer({ seconds, setSeconds }) {
       <input
         className="timer-input"
         type="range"
-        min="0"
-        max="10"
+        max="30"
         value={seconds}
         onChange={(e) => setSeconds(e.target.value)}
       />
@@ -39,4 +45,7 @@ export default function Timer({ seconds, setSeconds }) {
 Timer.propTypes = {
   seconds: PropTypes.number.isRequired,
   setSeconds: PropTypes.func.isRequired,
+  setQuestion: PropTypes.func.isRequired,
+  setPoints: PropTypes.func.isRequired,
+  points: PropTypes.number.isRequired,
 };
