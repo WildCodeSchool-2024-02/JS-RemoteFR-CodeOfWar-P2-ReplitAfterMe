@@ -22,6 +22,8 @@ export default function AnswerButton({
   const [showImage, setShowImage] = useState(false);
   const [className, setClassName] = useState("button");
 
+  console.info(className);
+
   useEffect(() => {
     if (randomAnswer === dataName) {
       setClassName("orange-button");
@@ -29,10 +31,10 @@ export default function AnswerButton({
   }, [randomAnswer, dataName]);
 
   useEffect(() => {
-    if (goodAnswer === dataName && className !== "greenButton") {
+    if (goodAnswer === dataName) {
       setClassName(answerClass);
     }
-  }, [answerClass, goodAnswer, dataName, className]);
+  }, [answerClass, goodAnswer, dataName]);
 
   const handleClick = () => {
     setShowImage(true);
