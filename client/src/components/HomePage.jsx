@@ -12,7 +12,6 @@ export default function HomePage() {
     setSeen(!seen);
   };
   const { chapter } = useContext(ChapterContext);
-  // const { chapter: chapterParam } = useParams;
 
   return (
     <main className="home-container">
