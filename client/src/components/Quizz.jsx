@@ -78,7 +78,6 @@ function Quizz() {
     }
   };
 
-  console.info(chapter);
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
       return (

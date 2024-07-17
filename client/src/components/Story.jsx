@@ -13,7 +13,6 @@ function Story() {
     }
   }, [chapter, setChapter, initialized]);
 
-  console.info(chapter);
   return (
     <section>
       J'afficherai ici mon Histoire
