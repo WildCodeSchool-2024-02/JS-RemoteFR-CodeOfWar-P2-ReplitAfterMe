@@ -38,17 +38,19 @@ function Quizz() {
   const secondsRef = useRef(seconds);
 
   const setQuestion = useCallback(() => {
-    const nextAnswerArray = [];
-    for (let i = 0; i < 4; i += 1) {
-      const randomIndex = Math.floor(Math.random() * data.length);
-      const selectedItem = data.splice(randomIndex, 1)[0];
-      nextAnswerArray.push(selectedItem);
+    if (data !== null) {
+      const nextAnswerArray = [];
+      for (let i = 0; i < 4; i += 1) {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const selectedItem = data.splice(randomIndex, 1)[0];
+        nextAnswerArray.push(selectedItem);
+      }
+      const nextGoodAnswer =
+        nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
+      setAnswerArray(nextAnswerArray);
+      setGoodAnswer(nextGoodAnswer);
+      setSeconds(secondsRef.current);
     }
-    const nextGoodAnswer =
-      nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
-    setAnswerArray(nextAnswerArray);
-    setGoodAnswer(nextGoodAnswer);
-    setSeconds(secondsRef.current);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -77,6 +79,25 @@ function Quizz() {
       );
     }
   };
+
+  console.info(chapter);
+
+  if (!data) {
+    return (
+      <div>
+        L'enquête touche à sa fin... avez-vous été assez assidu dans votre
+        enquête ?
+        <Link to="/">
+          <button type="button">
+            {" "}
+            Chercher des indices dans la page Histoire
+          </button>
+        </Link>
+        <label htmlFor="coupable">je pense qu'il s'agit de :</label>{" "}
+        <input type="text" id="coupable" name="coupable" />
+      </div>
+    );
+  }
 
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
