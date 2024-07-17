@@ -8,6 +8,8 @@ export default function Timer({
   setQuestion,
   points,
   setPoints,
+  setNumQuestion,
+  numQuestion,
 }) {
   const [isActive, setIsActive] = useState(true);
   const [endTimer, setEndTimer] = useState("time");
@@ -32,11 +34,21 @@ export default function Timer({
       setIsActive(false);
       setPoints(points + 0);
       setQuestion();
+      setNumQuestion(numQuestion + 1);
     } else {
       setIsActive(true);
     }
     return () => clearInterval(interval);
-  }, [isActive, seconds, setSeconds, points, setPoints, setQuestion]);
+  }, [
+    isActive,
+    seconds,
+    setSeconds,
+    points,
+    setPoints,
+    numQuestion,
+    setQuestion,
+    setNumQuestion,
+  ]);
 
   return (
     <div className="timer">
@@ -50,4 +62,6 @@ Timer.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
+  setNumQuestion: PropTypes.func.isRequired,
+  numQuestion: PropTypes.number.isRequired,
 };

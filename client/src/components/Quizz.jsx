@@ -136,6 +136,8 @@ function Quizz() {
           setPoints={setPoints}
           points={points}
           setQuestion={setQuestion}
+          setNumQuestion={setNumQuestion}
+          numQuestion={numQuestion}
         />
         <div className="answer-div">
           {answerArray.map((country) => (
