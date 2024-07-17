@@ -33,3 +33,10 @@
   margin: 1rem;
   border-radius: 1rem;
 }
+
+.last-none {
+  display: none;
+}
+.last {
+  display: flex;
+}

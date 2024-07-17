@@ -8,6 +8,7 @@ import "../style/quizz.css";
 
 import avatar from "../assets/images/avatar.png";
 import atouts from "../data/atout";
+import Kpes from "../assets/images/Kpes.png";
 
 import Question from "./Question";
 import Atout from "./Atout";
@@ -27,6 +28,9 @@ function Quizz() {
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [message, setMessage] = useState("");
+  const [display, setDisplay] = useState("last-none");
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -80,7 +84,21 @@ function Quizz() {
     }
   };
 
-  console.info(chapter);
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleCoupableClick = () => {
+    const lowerInputValue = inputValue.toLocaleLowerCase();
+    if (lowerInputValue === "kevin" || lowerInputValue === "kevin peset") {
+      setMessage(
+        "Le meurtrier est enfin sous les verrous ! Bravo ! J'espère que tu as apprécié le voyage !"
+      );
+      setDisplay("last");
+    } else {
+      setMessage("Perdu, relie l'histoire");
+    }
+  };
 
   if (!data) {
     return (
@@ -94,7 +112,23 @@ function Quizz() {
           </button>
         </Link>
         <label htmlFor="coupable">je pense qu'il s'agit de :</label>{" "}
-        <input type="text" id="coupable" name="coupable" />
+        <input
+          type="text"
+          id="coupable"
+          name="coupable"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button type="button" onClick={handleCoupableClick}>
+          Envoyer
+        </button>
+        <p>{message}</p>
+        <div className={display}>
+          <img src={Kpes} alt="Le dangereux meurtrier muni d'une perruque" />
+          <Link to="/">
+            <button type="button">Retourner au menu</button>
+          </Link>
+        </div>
       </div>
     );
   }
