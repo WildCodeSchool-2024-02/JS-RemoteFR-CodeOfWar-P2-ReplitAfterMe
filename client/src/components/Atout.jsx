@@ -12,10 +12,15 @@ export default function Atout({
   call,
   setArray,
 }) {
-  const [hidden, setHidden] = useState("button-atout");
+  const [hidden, setHidden] = useState(false);
+  const [opacity, setOpacity] = useState("button-atout");
 
   const hiddenAssets = () => {
-    setHidden("button-atout-hidden");
+    setHidden(true);
+  };
+
+  const changeOpacity = () => {
+    setOpacity("button-atout opacity");
   };
 
   const handleClick = () => {
@@ -32,11 +37,13 @@ export default function Atout({
 
   return (
     <button
-      className={hidden}
+      className={opacity}
       type="button"
+      disabled={hidden}
       onClick={function fn() {
         handleClick();
         hiddenAssets();
+        changeOpacity();
       }}
     >
       <img src={image} alt={imageAlt} className="img-atout" />

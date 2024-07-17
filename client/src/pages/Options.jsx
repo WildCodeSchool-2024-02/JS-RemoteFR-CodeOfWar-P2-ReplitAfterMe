@@ -17,15 +17,13 @@ export default function Options({ handleClickPopUp }) {
           <h1>Options</h1>
         </div>
         <ul>
-          <li>Avatar</li>
-          <li>Difficultés</li>
-          <li>Son</li>
-        </ul>
-        <div className="componentsPop">
+          <li className="options-choice">Avatar</li>
           <p>Avatar</p>
+          <li className="options-choice">Difficultés</li>
           <Difficulty />
+          <li className="options-choice">Son</li>
           <AudioPlayer />
-        </div>
+        </ul>
       </div>
     </div>
   );

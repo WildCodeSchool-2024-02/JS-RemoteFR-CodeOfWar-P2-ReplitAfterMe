@@ -1,7 +1,7 @@
 .img-atout {
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   padding: 0.4rem;
 }
 footer {
@@ -10,9 +10,7 @@ footer {
   flex-direction: row-reverse;
 }
 .button-atout {
-  position: relative;
   overflow: hidden;
-
   border: 3px solid black;
   border-radius: 5px;
   background-color: white;
@@ -21,13 +19,12 @@ footer {
     background-color 0.3s;
 }
 
-.button-atout-hidden {
-  display: none;
+.opacity {
+  opacity: 5%;
 }
 
 .button-atout::before {
   content: "";
-  position: absolute;
   bottom: -100%;
   left: 0;
   width: 100%;

@@ -10,6 +10,15 @@ export default function Timer({
   setPoints,
 }) {
   const [isActive, setIsActive] = useState(true);
+  const [endTimer, setEndTimer] = useState("time");
+
+  useEffect(() => {
+    if (seconds <= 5) {
+      setEndTimer("time end-time");
+    } else {
+      setEndTimer("time");
+    }
+  }, [seconds]);
 
   useEffect(() => {
     let interval = null;
@@ -31,14 +40,7 @@ export default function Timer({
 
   return (
     <div className="timer">
-      <div className="time">{seconds}</div>
-      <input
-        className="timer-input"
-        type="range"
-        max="30"
-        value={seconds}
-        onChange={(e) => setSeconds(e.target.value)}
-      />
+      <div className={endTimer}>{seconds}</div>
     </div>
   );
 }
