@@ -38,3 +38,10 @@
   object-fit: cover;
   max-width: 430px;
 }
+
+.last-none {
+  display: none;
+}
+.last {
+  display: flex;
+}

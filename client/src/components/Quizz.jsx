@@ -8,6 +8,8 @@ import "../style/quizz.css";
 
 import avatar from "../assets/images/avatar.png";
 import atouts from "../data/atout";
+import Kpes from "../assets/images/Kpes.png";
+
 import videoBg from "../assets/Cloud.mp4";
 
 import Question from "./Question";
@@ -28,6 +30,9 @@ function Quizz() {
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [message, setMessage] = useState("");
+  const [display, setDisplay] = useState("last-none");
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -39,17 +44,19 @@ function Quizz() {
   const secondsRef = useRef(seconds);
 
   const setQuestion = useCallback(() => {
-    const nextAnswerArray = [];
-    for (let i = 0; i < 4; i += 1) {
-      const randomIndex = Math.floor(Math.random() * data.length);
-      const selectedItem = data.splice(randomIndex, 1)[0];
-      nextAnswerArray.push(selectedItem);
+    if (data !== null) {
+      const nextAnswerArray = [];
+      for (let i = 0; i < 4; i += 1) {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const selectedItem = data.splice(randomIndex, 1)[0];
+        nextAnswerArray.push(selectedItem);
+      }
+      const nextGoodAnswer =
+        nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
+      setAnswerArray(nextAnswerArray);
+      setGoodAnswer(nextGoodAnswer);
+      setSeconds(secondsRef.current);
     }
-    const nextGoodAnswer =
-      nextAnswerArray[Math.floor(Math.random() * nextAnswerArray.length)];
-    setAnswerArray(nextAnswerArray);
-    setGoodAnswer(nextGoodAnswer);
-    setSeconds(secondsRef.current);
   }, [data, setSeconds]);
 
   useEffect(() => {
@@ -78,6 +85,55 @@ function Quizz() {
       );
     }
   };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleCoupableClick = () => {
+    const lowerInputValue = inputValue.toLocaleLowerCase();
+    if (lowerInputValue === "kevin" || lowerInputValue === "kevin peset") {
+      setMessage(
+        "Le meurtrier est enfin sous les verrous ! Bravo ! J'espère que tu as apprécié le voyage !"
+      );
+      setDisplay("last");
+    } else {
+      setMessage("Perdu, relie l'histoire");
+    }
+  };
+
+  if (!data) {
+    return (
+      <div>
+        L'enquête touche à sa fin... avez-vous été assez assidu dans votre
+        enquête ?
+        <Link to="/">
+          <button type="button">
+            {" "}
+            Chercher des indices dans la page Histoire
+          </button>
+        </Link>
+        <label htmlFor="coupable">je pense qu'il s'agit de :</label>{" "}
+        <input
+          type="text"
+          id="coupable"
+          name="coupable"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <button type="button" onClick={handleCoupableClick}>
+          Envoyer
+        </button>
+        <p>{message}</p>
+        <div className={display}>
+          <img src={Kpes} alt="Le dangereux meurtrier muni d'une perruque" />
+          <Link to="/">
+            <button type="button">Retourner au menu</button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
@@ -112,7 +168,69 @@ function Quizz() {
   if (!goodAnswer) {
     return "";
   }
+  if (chapter <= 4) {
+    return (
+      <main className="quizz-container">
+        <header className="header">
+          <div aria-hidden="true" onClick={togglePopup}>
+            <img src={avatar} alt="avatar de profil" />
+          </div>
+          <button type="button">{points} pts</button>
+        </header>
+        <Question
+          dataFlags={goodAnswer.flags.svg}
+          dataAlt={goodAnswer.flags.alt}
+          numQuestion={numQuestion}
+          maxQuestions={maxQuestions}
+        />
 
+        <Timer
+          seconds={seconds}
+          setSeconds={setSeconds}
+          setPoints={setPoints}
+          points={points}
+          setQuestion={setQuestion}
+        />
+        <div className="answer-div">
+          {answerArray.map((country) => (
+            <AnswerButton
+              key={country.translations.fra.common}
+              dataName={country.translations.fra.common}
+              goodAnswer={goodAnswer.translations.fra.common}
+              setPoints={setPoints}
+              points={points}
+              setQuestion={setQuestion}
+              setNumQuestion={setNumQuestion}
+              numQuestion={numQuestion}
+              bonus={bonus}
+              setBonus={setBonus}
+              randomAnswer={randomAnswer}
+              disable={disable}
+              setDisable={setDisable}
+              answerClass={answerClass}
+              setAnswerClass={setAnswerClass}
+            />
+          ))}
+        </div>
+        {popUP && <PopUp handleClose={togglePopup} />}
+        <footer className="footer">
+          {atouts.map((atout) => (
+            <Atout
+              key={atout.name}
+              name={atout.name}
+              image={atout.img.src}
+              imageAlt={atout.img.alt}
+              bonus={bonus}
+              setBonus={setBonus}
+              setQuestion={setQuestion}
+              setArray={setArray}
+              call={call}
+            />
+          ))}
+        </footer>
+      </main>
+    );
+  }
   return (
     <>
       <video src={videoBg} autoPlay muted loop className="video" />

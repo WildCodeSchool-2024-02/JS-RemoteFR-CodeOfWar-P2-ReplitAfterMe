@@ -32,8 +32,12 @@ const router = createBrowserRouter([
         path: `/quizz/:chapter`,
         element: <Quizz />,
         loader: async ({ params }) => {
-          const data = await axios.get(request[params.chapter].API);
-          return data.data;
+          if (request[params.chapter]) {
+            const data = await axios.get(request[params.chapter].API);
+            return data.data;
+          }
+
+          return null;
         },
       },
       {
