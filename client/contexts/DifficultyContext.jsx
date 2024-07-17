@@ -11,15 +11,15 @@ import PropTypes from "prop-types";
 const DifficultyContext = createContext();
 
 export default function DifficultyProvider({ children }) {
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("Facile");
   const [seconds, setSeconds] = useState(10);
 
   const difficultyValue = useCallback(() => {
-    if (difficulty === "easy") {
+    if (difficulty === "Facile") {
       setSeconds(20);
-    } else if (difficulty === "medium") {
+    } else if (difficulty === "Moyen") {
       setSeconds(15);
-    } else if (difficulty === "hard") {
+    } else if (difficulty === "Difficile") {
       setSeconds(10);
     }
   }, [difficulty, setSeconds]);
