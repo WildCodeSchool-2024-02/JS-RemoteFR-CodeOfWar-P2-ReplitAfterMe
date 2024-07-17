@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const ChapterContext = createContext();
 
 export function ChapterProvider({ children }) {
-  const [chapter, setChapter] = useState(10);
+  const [chapter, setChapter] = useState(0);
   const chap = useMemo(() => ({ chapter, setChapter }), [chapter, setChapter]);
   return (
     <ChapterContext.Provider value={chap}>{children}</ChapterContext.Provider>
