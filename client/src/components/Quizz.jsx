@@ -111,7 +111,69 @@ function Quizz() {
   if (!goodAnswer) {
     return "";
   }
+  if (chapter <= 4) {
+    return (
+      <main className="quizz-container">
+        <header className="header">
+          <div aria-hidden="true" onClick={togglePopup}>
+            <img src={avatar} alt="avatar de profil" />
+          </div>
+          <button type="button">{points} pts</button>
+        </header>
+        <Question
+          dataFlags={goodAnswer.flags.svg}
+          dataAlt={goodAnswer.flags.alt}
+          numQuestion={numQuestion}
+          maxQuestions={maxQuestions}
+        />
 
+        <Timer
+          seconds={seconds}
+          setSeconds={setSeconds}
+          setPoints={setPoints}
+          points={points}
+          setQuestion={setQuestion}
+        />
+        <div className="answer-div">
+          {answerArray.map((country) => (
+            <AnswerButton
+              key={country.translations.fra.common}
+              dataName={country.translations.fra.common}
+              goodAnswer={goodAnswer.translations.fra.common}
+              setPoints={setPoints}
+              points={points}
+              setQuestion={setQuestion}
+              setNumQuestion={setNumQuestion}
+              numQuestion={numQuestion}
+              bonus={bonus}
+              setBonus={setBonus}
+              randomAnswer={randomAnswer}
+              disable={disable}
+              setDisable={setDisable}
+              answerClass={answerClass}
+              setAnswerClass={setAnswerClass}
+            />
+          ))}
+        </div>
+        {popUP && <PopUp handleClose={togglePopup} />}
+        <footer className="footer">
+          {atouts.map((atout) => (
+            <Atout
+              key={atout.name}
+              name={atout.name}
+              image={atout.img.src}
+              imageAlt={atout.img.alt}
+              bonus={bonus}
+              setBonus={setBonus}
+              setQuestion={setQuestion}
+              setArray={setArray}
+              call={call}
+            />
+          ))}
+        </footer>
+      </main>
+    );
+  }
   return (
     <main className="quizz-container">
       <header className="header">
@@ -121,8 +183,8 @@ function Quizz() {
         <button type="button">{points} pts</button>
       </header>
       <Question
-        dataFlags={goodAnswer.flags.svg}
-        dataAlt={goodAnswer.flags.alt}
+        dataFlags={goodAnswer.capital[0]}
+        dataAlt={goodAnswer.capital[0]}
         numQuestion={numQuestion}
         maxQuestions={maxQuestions}
       />
