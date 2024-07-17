@@ -83,6 +83,9 @@ function Quizz() {
       return (
         <div>
           Vous avez obtenu : {points} points ! Le fugitif est tout proche...
+          <Link to="/story">
+            <button type="button">Chapitre suivant</button>
+          </Link>
           <Link to="/">
             <button type="button" onClick={() => setChapter(chapter + 1)}>
               Retourner à l'accueil
@@ -95,6 +98,9 @@ function Quizz() {
     return (
       <div>
         Vous avez obtenu : {points} points... Le fugitif s'est enfui.
+        <Link reloadDocument to={`/quizz/${chapter}`}>
+          <button type="button">Recommencer</button>
+        </Link>
         <Link to="/">
           <button type="button">Retourner à l'accueil</button>
         </Link>

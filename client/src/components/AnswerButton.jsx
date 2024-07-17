@@ -63,11 +63,6 @@ export default function AnswerButton({
     }
   };
 
-  // useEffect(() =>{
-  //   if (goodAnswer === dataName) {
-  //     setClassName("green-button");
-  //   }},[handleClick, dataName, goodAnswer])
-
   return (
     <div className="animation-button">
       <button

@@ -1,27 +1,24 @@
-import { useState } from "react";
-
+import { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ChapterContext } from "../contexts/ChapterContext";
 import "../style/story.css";
 
-import story from "../data/story";
-
 function Story() {
-  const [index, setIndex] = useState(0);
+  const { chapter, setChapter } = useContext(ChapterContext);
+  const [initialized, setInitialized] = useState(false);
+  useEffect(() => {
+    if (!initialized) {
+      setChapter(chapter + 1);
+      setInitialized(true);
+    }
+  }, [chapter, setChapter, initialized]);
 
-  const nextStory = () => {
-    setIndex((prevIndex) => {
-      if (prevIndex < story.intro.length - 1) {
-        return prevIndex + 1;
-      }
-      return prevIndex;
-    });
-  };
   return (
-    <section className="storySection" onClick={nextStory} aria-hidden="true">
-      {parseInt(index, 10) === story.intro.length - 1 ? (
-        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">retour menu</a>
-      ) : (
-        <p>{story.intro[parseInt(index, 10)].text}</p>
-      )}
+    <section>
+      J'afficherai ici mon Histoire
+      <Link to={`/quizz/${chapter}`}>
+        <button type="button">Commencer Quizz</button>
+      </Link>
     </section>
   );
 }

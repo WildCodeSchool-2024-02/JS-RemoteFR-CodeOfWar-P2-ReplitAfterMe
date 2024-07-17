@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import detective from "../assets/images/detective-2.png";
 import Rain from "./Rain";
 import "../style/intro.css";
+import { ChapterContext } from "../contexts/ChapterContext";
 
 export default function Intro() {
+  const { chapter } = useContext(ChapterContext);
   return (
     <div className="intro-container">
       <Rain count={100} />
@@ -36,7 +39,7 @@ export default function Intro() {
           </p>
           <div className="introGame">
             <img src={detective} alt="detective" />
-            <Link to="/quizz" className="playGame">
+            <Link to={`/quizz/${chapter}`} className="playGame">
               Jouer
             </Link>
           </div>
