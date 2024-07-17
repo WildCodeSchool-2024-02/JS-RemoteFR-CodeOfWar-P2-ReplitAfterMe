@@ -1,19 +1,33 @@
 import { useDifficulty } from "../../contexts/DifficultyContext";
 
 export default function Difficulty() {
-  const { difficulty, setDifficulty } = useDifficulty();
+  const { setDifficulty, difficulty } = useDifficulty();
+
+  const getClasseExpanded = (mode) =>
+    difficulty === mode ? "difficulty-button expanded" : "difficulty-button";
 
   return (
     <div>
-      <p>{difficulty}</p>
-      <div>
-        <button type="button" onClick={() => setDifficulty("easy")}>
+      <div className="difficulty-container">
+        <button
+          type="button"
+          onClick={() => setDifficulty("Facile")}
+          className={getClasseExpanded("Facile")}
+        >
           Facile
         </button>
-        <button type="button" onClick={() => setDifficulty("medium")}>
+        <button
+          type="button"
+          onClick={() => setDifficulty("Moyen")}
+          className={getClasseExpanded("Moyen")}
+        >
           Moyen
         </button>
-        <button type="button" onClick={() => setDifficulty("hard")}>
+        <button
+          type="button"
+          onClick={() => setDifficulty("Difficile")}
+          className={getClasseExpanded("Difficile")}
+        >
           Difficile
         </button>
       </div>
