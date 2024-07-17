@@ -3,13 +3,15 @@ import ReactDOM from "react-dom/client";
 import axios from "axios";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MusicProvider } from "./contexts/MusicContext";
 
+import DifficultyProvider from "../contexts/DifficultyContext";
 import request from "./data/request";
-
 import App from "./App";
 import Quizz from "./components/Quizz";
 import Story from "./components/Story";
 import HomePage from "./components/HomePage";
+import Intro from "./components/Intro";
 
 import "./style/app.css";
 
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/intro",
+        element: <Intro />,
       },
       {
         path: `/quizz/:chapter`,
@@ -42,6 +48,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MusicProvider>
+      <DifficultyProvider>
+        <RouterProvider router={router} />
+      </DifficultyProvider>
+    </MusicProvider>
   </React.StrictMode>
 );

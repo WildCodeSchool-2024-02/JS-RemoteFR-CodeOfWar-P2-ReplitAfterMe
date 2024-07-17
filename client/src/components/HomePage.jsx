@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
-import { ChapterContext } from "../contexts/ChapterContext";
+
+import { useState } from "react";
 
 import "../style/homePage.css";
 import Options from "../pages/Options";
@@ -11,7 +11,6 @@ export default function HomePage() {
   const handleClickPopUp = () => {
     setSeen(!seen);
   };
-  const { chapter } = useContext(ChapterContext);
 
   return (
     <main className="home-container">
@@ -22,7 +21,7 @@ export default function HomePage() {
       <div className="linksContainer">
         <ul className="links">
           <li>
-            <Link to={`/quizz/${chapter}`} className="play">
+            <Link to="/intro" className="play">
               JOUER
             </Link>
           </li>

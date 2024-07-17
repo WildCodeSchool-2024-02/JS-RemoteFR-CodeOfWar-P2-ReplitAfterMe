@@ -29,10 +29,10 @@ export default function AnswerButton({
   }, [randomAnswer, dataName]);
 
   useEffect(() => {
-    if (goodAnswer === dataName && className !== "greenButton") {
+    if (goodAnswer === dataName) {
       setClassName(answerClass);
     }
-  }, [answerClass, goodAnswer, dataName, className]);
+  }, [answerClass, goodAnswer, dataName]);
 
   const handleClick = () => {
     setShowImage(true);
