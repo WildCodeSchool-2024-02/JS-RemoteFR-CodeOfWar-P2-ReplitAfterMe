@@ -1,0 +1,68 @@
+.PopUpNextQuestion {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 400px;
+  z-index: 6;
+  background-color: #464646d0;
+  border-radius: 30px 30px 0px 0px;
+}
+.PopUpNextQuestion > img {
+  max-width: 80px;
+  margin: -70px;
+}
+
+.PopUpNextQuestion > button {
+  background-color: #6a8ba6;
+  max-width: 120px;
+  padding: 5px;
+  font-weight: 900;
+  color: aliceblue;
+}
+.PopUpNextQuestion > p > span {
+  color: greenyellow;
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+.PopUpNextQuestion > p {
+  color: aliceblue;
+  margin-top: 80px;
+  font-weight: 900;
+}
+
+.custom-shape-divider-top-1721296208 > p {
+  background-color: #6a8ba6;
+  border-radius: 30px;
+  color: aliceblue;
+  font-weight: 900;
+}
+.custom-shape-divider-top-1721296208 {
+  width: 70%;
+  overflow: hidden;
+  line-height: 4;
+}
+
+.custom-shape-divider-top-1721296208 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 188px;
+}
+
+.custom-shape-divider-top-1721296208 .shape-fill {
+  fill: #6a8ba6;
+}
+
+@media (max-width: 767px) {
+  .custom-shape-divider-top-1721296208 svg {
+    width: calc(100% + 1.3px);
+    height: 80px;
+  }
+}

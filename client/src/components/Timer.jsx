@@ -8,8 +8,13 @@ export default function Timer({
   setQuestion,
   points,
   setPoints,
+  setNumQuestion,
+  numQuestion,
+  toggleTimerOut,
+  isActive,
+  setIsActive,
+  timerOut,
 }) {
-  const [isActive, setIsActive] = useState(true);
   const [endTimer, setEndTimer] = useState("time");
 
   useEffect(() => {
@@ -28,15 +33,27 @@ export default function Timer({
       }, 1000);
     }
 
-    if (seconds === 0) {
+    if (seconds === 0 && !timerOut) {
+      toggleTimerOut();
       setIsActive(false);
       setPoints(points + 0);
-      setQuestion();
-    } else {
-      setIsActive(true);
+      setNumQuestion(numQuestion + 1);
     }
+
     return () => clearInterval(interval);
-  }, [isActive, seconds, setSeconds, points, setPoints, setQuestion]);
+  }, [
+    isActive,
+    seconds,
+    setSeconds,
+    points,
+    setPoints,
+    numQuestion,
+    setQuestion,
+    setNumQuestion,
+    setIsActive,
+    toggleTimerOut,
+    timerOut,
+  ]);
 
   return (
     <div className="timer">
@@ -50,4 +67,10 @@ Timer.propTypes = {
   setQuestion: PropTypes.func.isRequired,
   setPoints: PropTypes.func.isRequired,
   points: PropTypes.number.isRequired,
+  setNumQuestion: PropTypes.func.isRequired,
+  numQuestion: PropTypes.number.isRequired,
+  toggleTimerOut: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  setIsActive: PropTypes.func.isRequired,
+  timerOut: PropTypes.bool.isRequired,
 };
