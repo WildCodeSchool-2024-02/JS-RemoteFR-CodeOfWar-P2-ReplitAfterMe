@@ -3,7 +3,9 @@ import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChapterContext } from "../contexts/ChapterContext";
 import story from "../data/story";
+import RainStory from "./RainStory";
 import "../style/story.css";
+import "../style/rainStory.css";
 
 export default function Story() {
   const { chapter, setChapter } = useContext(ChapterContext);
@@ -21,11 +23,16 @@ export default function Story() {
   }
 
   return (
-    <section>
-      <div dangerouslySetInnerHTML={{ __html: story[chapter - 1].text }} />
-      <Link to={`/quizz/${chapter}`}>
-        <button type="button">Continuer Quizz</button>
-      </Link>
+    <section className="story-container">
+      <div className="story-wrapper">
+        <RainStory />
+        <div dangerouslySetInnerHTML={{ __html: story[chapter - 1].text }} />
+        <Link to={`/quizz/${chapter}`}>
+          <button className="next-quizz" type="button">
+            Continuer Quizz
+          </button>
+        </Link>
+      </div>
     </section>
   );
 }
