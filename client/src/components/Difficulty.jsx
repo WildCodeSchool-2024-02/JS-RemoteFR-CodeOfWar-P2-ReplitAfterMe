@@ -1,4 +1,4 @@
-import { useDifficulty } from "../../contexts/DifficultyContext";
+import { useDifficulty } from "../contexts/DifficultyContext";
 
 export default function Difficulty() {
   const { setDifficulty, difficulty } = useDifficulty();

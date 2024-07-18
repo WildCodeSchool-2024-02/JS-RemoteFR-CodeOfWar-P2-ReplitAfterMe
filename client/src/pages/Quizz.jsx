@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef, useContext } from "react";
 import { useLoaderData, Link } from "react-router-dom";
-import { useDifficulty } from "../../contexts/DifficultyContext";
+import { useDifficulty } from "../contexts/DifficultyContext";
+import { useAvatar } from "../contexts/AvatarContext";
 
 import { ChapterContext } from "../contexts/ChapterContext";
 
@@ -12,11 +13,11 @@ import Kpes from "../assets/images/Kpes.png";
 
 import videoBg from "../assets/Cloud.mp4";
 
-import Question from "./Question";
-import Atout from "./Atout";
-import Timer from "./Timer";
-import AnswerButton from "./AnswerButton";
-import PopUp from "./PopUp";
+import Question from "../components/Question";
+import Atout from "../components/Atout";
+import Timer from "../components/Timer";
+import AnswerButton from "../components/AnswerButton";
+import PopUp from "../components/PopUp";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
@@ -33,6 +34,9 @@ function Quizz() {
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
   const [display, setDisplay] = useState("last-none");
+  const { selectH, selectF, imgWoman, imgMan } = useAvatar();
+  const [altValue, setAltValue] = useState("avatar par default");
+  const [avatarImg, setAvatarImg] = useState();
 
   const data = useLoaderData();
   const maxQuestions = 10;
@@ -101,6 +105,19 @@ function Quizz() {
       setMessage("Perdu, relie l'histoire");
     }
   };
+
+  useEffect(() => {
+    if (selectF) {
+      setAvatarImg(imgWoman);
+      setAltValue("une femme detective");
+    } else if (selectH) {
+      setAvatarImg(imgMan);
+      setAltValue("un homme detective");
+    } else {
+      setAvatarImg(avatar);
+      setAltValue("un detective inconnu");
+    }
+  }, [selectF, selectH, imgMan, imgWoman]);
 
   if (!data) {
     return (
@@ -204,7 +221,7 @@ function Quizz() {
         <main className="quizz-container">
           <header className="header">
             <div aria-hidden="true" onClick={togglePopup}>
-              <img src={avatar} alt="avatar de profil" />
+              <img className="avatar-img" src={avatarImg} alt={altValue} />
             </div>
             <button type="button">{points} pts</button>
           </header>

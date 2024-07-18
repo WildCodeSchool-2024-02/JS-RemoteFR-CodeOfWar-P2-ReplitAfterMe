@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import detective from "../assets/images/detective-2.png";
-import Rain from "./Rain";
+import Rain from "../components/Rain";
 import "../style/intro.css";
 import { ChapterContext } from "../contexts/ChapterContext";
 

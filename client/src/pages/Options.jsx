@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import AudioPlayer from "../components/AudioPlayer";
 import Difficulty from "../components/Difficulty";
+import Avatar from "../components/Avatar";
 
 import "../style/options.css";
 
@@ -18,7 +19,7 @@ export default function Options({ handleClickPopUp }) {
         </div>
         <ul>
           <li className="options-choice">Avatar</li>
-          <p>Avatar</p>
+          <Avatar />
           <li className="options-choice">Difficultés</li>
           <Difficulty />
           <li className="options-choice">Son</li>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import "../style/homePage.css";
-import Options from "../pages/Options";
+import Options from "./Options";
 
 export default function HomePage() {
   const [seen, setSeen] = useState(false);

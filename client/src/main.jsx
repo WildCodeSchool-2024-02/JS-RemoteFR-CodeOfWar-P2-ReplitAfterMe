@@ -4,14 +4,15 @@ import axios from "axios";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MusicProvider } from "./contexts/MusicContext";
+import { AvatarProvider } from "./contexts/AvatarContext";
+import { DifficultyProvider } from "./contexts/DifficultyContext";
 
-import DifficultyProvider from "../contexts/DifficultyContext";
 import request from "./data/request";
 import App from "./App";
-import Quizz from "./components/Quizz";
-import Story from "./components/Story";
-import HomePage from "./components/HomePage";
-import Intro from "./components/Intro";
+import Quizz from "./pages/Quizz";
+import Story from "./pages/Story";
+import HomePage from "./pages/HomePage";
+import Intro from "./pages/Intro";
 
 import "./style/app.css";
 
@@ -54,7 +55,9 @@ root.render(
   <React.StrictMode>
     <MusicProvider>
       <DifficultyProvider>
-        <RouterProvider router={router} />
+        <AvatarProvider>
+          <RouterProvider router={router} />
+        </AvatarProvider>
       </DifficultyProvider>
     </MusicProvider>
   </React.StrictMode>

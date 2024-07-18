@@ -85,6 +85,20 @@
   background-color: transparent;
 }
 
+.avatar {
+  display: flex;
+  gap: 2rem;
+}
+
+.avatar-img {
+  width: 3rem;
+}
+
+.avatar-img .opacity {
+  opacity: 80%;
+  width: 3rem;
+}
+
 .volumeImg {
   width: 2rem;
   margin-right: 10px;
