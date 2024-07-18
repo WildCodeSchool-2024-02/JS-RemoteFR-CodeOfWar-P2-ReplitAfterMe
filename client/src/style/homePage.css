@@ -10,12 +10,12 @@
   background-size: cover;
   background-position-x: center;
   background-position-y: top;
-  width: 100svw;
   height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 430px;
+  max-height: 932px;
 }
 
 .titleHome,
