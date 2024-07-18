@@ -1,26 +1,38 @@
+/* eslint-disable react/no-danger */
 import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChapterContext } from "../contexts/ChapterContext";
+import story from "../data/story";
+import RainStory from "./RainStory";
 import "../style/story.css";
+import "../style/rainStory.css";
 
-function Story() {
+export default function Story() {
   const { chapter, setChapter } = useContext(ChapterContext);
   const [initialized, setInitialized] = useState(false);
+
   useEffect(() => {
     if (!initialized) {
       setChapter(chapter + 1);
       setInitialized(true);
     }
-  }, [chapter, setChapter, initialized]);
+  }, [initialized, chapter, setChapter]);
+
+  if (chapter === 0) {
+    return <p>loading...</p>;
+  }
 
   return (
-    <section>
-      J'afficherai ici mon Histoire
-      <Link to={`/quizz/${chapter}`}>
-        <button type="button">Commencer Quizz</button>
-      </Link>
+    <section className="story-container">
+      <div className="story-wrapper">
+        <RainStory />
+        <div dangerouslySetInnerHTML={{ __html: story[chapter - 1].text }} />
+        <Link to={`/quizz/${chapter}`}>
+          <button className="next-quizz" type="button">
+            Continuer Quizz
+          </button>
+        </Link>
+      </div>
     </section>
   );
 }
-
-export default Story;

@@ -30,13 +30,20 @@ export default function Intro() {
         </div>
         <div className="firstIntro">
           <p>
-            " Ah, te voilà! C'est toi le nouvel inspecteur que la centrale nous
-            envoie? Dépêche-toi, l'équipage est déjà sur le départ. Quelle est
-            la première étape? Direction l'Egypte ancienne, nos traqueurs
-            temporels nous indiques que la cible s'est rendu à cet endroit pour
-            débuter ses méfaits. Nous devons absolument le retrouver et réparer
-            les dégâts! Entendu, allons voir ça de plus près. "
+            _ Ah, te voilà! C'est toi le nouvel inspecteur que la centrale nous
+            envoie? Dépêche-toi, l'équipage est déjà sur le départ.
           </p>
+
+          <p> _ Quelle est la première étape?</p>
+
+          <p>
+            {" "}
+            _ Direction l'Egypte ancienne, nos traqueurs temporels nous indiques
+            que la cible s'est rendu à cet endroit pour débuter ses méfaits.
+            Nous devons absolument le retrouver et réparer les dégâts!
+          </p>
+
+          <p> _ Entendu, allons voir ça de plus près.</p>
           <div className="introGame">
             <img src={detective} alt="detective" />
             <Link to={`/quizz/${chapter}`} className="playGame">

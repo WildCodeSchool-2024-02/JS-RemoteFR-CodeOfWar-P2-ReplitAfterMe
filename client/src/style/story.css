@@ -1,10 +1,33 @@
-* {
-  margin: 0;
+.story-container {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-.storySection {
+.story-wrapper {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: column;
+  background-color: rgba(2, 2, 2, 0.805);
+  background-image: url(../assets/images/orage-7.jpg);
+  background-size: cover;
+  background-position: center;
+  font-family: var(--thirty-font);
+  padding: 2rem;
+  color: rgb(231, 230, 230);
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+}
+
+button.next-quizz {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px #bababa;
+  margin: 30px;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  font-family: var(--primary-font);
+  font-weight: bold;
 }
