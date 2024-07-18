@@ -38,7 +38,7 @@
   height: 100vh;
   object-fit: cover;
   max-width: 430px;
-  max-height: 900px;
+  max-height: 932px;
 }
 
 .last-none {
@@ -65,7 +65,7 @@
     #009ce6 83.33%,
     #008be3 100%
   );
-  max-height: 900px;
+  max-height: 932px;
 }
 
 .end-chapter-quizz {
@@ -86,6 +86,7 @@
   font-size: 2rem;
   width: 18ch;
   margin: 2rem;
+  text-align: center;
 }
 
 .game-status {
@@ -117,7 +118,7 @@
   text-align: center;
 }
 
-input {
+.input-text {
   margin: 1rem;
   width: 80%;
   padding: 12px 20px;
