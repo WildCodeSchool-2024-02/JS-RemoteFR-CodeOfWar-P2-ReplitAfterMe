@@ -119,6 +119,7 @@ function Quizz() {
             <p className="game-status">je pense qu'il s'agit de :</p>
           </label>{" "}
           <input
+            className="input-text"
             type="text"
             id="coupable"
             name="coupable"
