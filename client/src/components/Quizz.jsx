@@ -26,7 +26,7 @@ function Quizz() {
   const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
-  const { chapter, setChapter } = useContext(ChapterContext);
+  const { chapter } = useContext(ChapterContext);
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
@@ -167,15 +167,6 @@ function Quizz() {
                   Chapitre suivant
                 </button>
               </Link>
-              <Link to="/">
-                <button
-                  className="boutton-end-quizz"
-                  type="button"
-                  onClick={() => setChapter(chapter + 1)}
-                >
-                  Accueil
-                </button>
-              </Link>
             </div>
           </div>
         </main>
@@ -192,11 +183,6 @@ function Quizz() {
             <p className="game-status">Le fugitif s'est enfui.</p>
           </div>
           <div>
-            <Link reloadDocument to={`/quizz/${chapter}`}>
-              <button className="boutton-end-quizz" type="button">
-                Recommencer
-              </button>
-            </Link>
             <Link to="/">
               <button className="boutton-end-quizz" type="button">
                 Accueil
