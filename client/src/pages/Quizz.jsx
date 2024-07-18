@@ -18,6 +18,7 @@ import Atout from "../components/Atout";
 import Timer from "../components/Timer";
 import AnswerButton from "../components/AnswerButton";
 import PopUp from "../components/PopUp";
+import PopUpNextQuestion from "../components/PopUpNextQuestion";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
@@ -27,10 +28,12 @@ function Quizz() {
   const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
+  const [timerOut, setTimerOut] = useState(false);
   const { chapter } = useContext(ChapterContext);
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
+  const [isActive, setIsActive] = useState(true);
   const [inputValue, setInputValue] = useState("");
   const [message, setMessage] = useState("");
   const [display, setDisplay] = useState("last-none");
@@ -43,6 +46,10 @@ function Quizz() {
 
   const togglePopup = () => {
     setPopUp(!popUP);
+  };
+
+  const toggleTimerOut = () => {
+    setTimerOut(!timerOut);
   };
 
   const secondsRef = useRef(seconds);
@@ -136,6 +143,7 @@ function Quizz() {
             <p className="game-status">je pense qu'il s'agit de :</p>
           </label>{" "}
           <input
+            className="input-text"
             type="text"
             id="coupable"
             name="coupable"
@@ -189,7 +197,7 @@ function Quizz() {
         </main>
       );
     }
-
+    console.info(numQuestion);
     return (
       <main className="main-end-chapter">
         <div className="end-chapter-quizz">
@@ -231,14 +239,28 @@ function Quizz() {
             numQuestion={numQuestion}
             maxQuestions={maxQuestions}
           />
-
           <Timer
             seconds={seconds}
             setSeconds={setSeconds}
             setPoints={setPoints}
             points={points}
             setQuestion={setQuestion}
+            setNumQuestion={setNumQuestion}
+            numQuestion={numQuestion}
+            toggleTimerOut={toggleTimerOut}
+            isActive={isActive}
+            setIsActive={setIsActive}
+            timerOut={timerOut}
           />
+          {timerOut && (
+            <PopUpNextQuestion
+              goodAnswer={goodAnswer.translations.fra.common}
+              setQuestion={setQuestion}
+              toggleTimerOut={toggleTimerOut}
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          )}
           <div className="answer-div">
             {answerArray.map((country) => (
               <AnswerButton
@@ -303,7 +325,23 @@ function Quizz() {
           setPoints={setPoints}
           points={points}
           setQuestion={setQuestion}
+          setNumQuestion={setNumQuestion}
+          numQuestion={numQuestion}
+          toggleTimerOut={toggleTimerOut}
+          isActive={isActive}
+          setIsActive={setIsActive}
+          timerOut={timerOut}
         />
+        {timerOut && (
+          <PopUpNextQuestion
+            goodAnswer={goodAnswer.translations.fra.common}
+            setQuestion={setQuestion}
+            toggleTimerOut={toggleTimerOut}
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
+        )}
+
         <div className="answer-div">
           {answerArray.map((country) => (
             <AnswerButton

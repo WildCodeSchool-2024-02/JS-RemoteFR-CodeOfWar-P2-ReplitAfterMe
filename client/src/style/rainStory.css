@@ -1,0 +1,83 @@
+.story-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+}
+
+.rain-container {
+  margin-top: 5rem;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.058);
+}
+
+.rain-cloud {
+  position: relative;
+  width: 320px;
+  height: 100px;
+  background: #fff;
+  border-radius: 100px;
+  filter: drop-shadow(8px 8px 0 #0005);
+  animation: animateCloud 2s steps(1) infinite;
+}
+
+@keyframes animateCloud {
+  0% {
+    filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 0 #fff) brightness(1);
+  }
+  95% {
+    filter: drop-shadow(8px 8px 0 #0001) drop-shadow(0 0 50px #fff5)
+      brightness(10);
+  }
+}
+
+.rain-cloud::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 40px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #484f59;
+  box-shadow: 90px -10px 0 30px #484f59;
+}
+
+.rain-cloud::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #484f59;
+  border-radius: 100px;
+  z-index: 1000;
+}
+
+.rain-drop {
+  position: fixed;
+  top: 40px;
+  background: rgb(70, 64, 64);
+  width: 2px;
+  height: 10px;
+  transform-origin: bottom;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  70% {
+    transform: translateY(360px) scaleY(1);
+  }
+  80% {
+    transform: translateY(360px) scaleY(0.2);
+  }
+  100% {
+    transform: translateY(360px) scaleY(0) scaleX(15);
+  }
+}
