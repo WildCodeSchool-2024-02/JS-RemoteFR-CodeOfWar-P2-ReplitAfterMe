@@ -138,30 +138,58 @@ function Quizz() {
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
       return (
-        <div>
-          Vous avez obtenu : {points} points ! Le fugitif est tout proche...
-          <Link to="/story">
-            <button type="button">Chapitre suivant</button>
-          </Link>
-          <Link to="/">
-            <button type="button" onClick={() => setChapter(chapter + 1)}>
-              Retourner à l'accueil
-            </button>
-          </Link>
-        </div>
+        <main className="main-end-chapter">
+          <div className="end-chapter-quizz">
+            <div>
+              <h2 className="number-points">
+                Vous avez obtenu : {points} points !
+              </h2>
+              <p className="game-status"> Le fugitif est tout proche...</p>
+            </div>
+            <div>
+              <Link to="/story">
+                <button className="boutton-end-quizz" type="button">
+                  Chapitre suivant
+                </button>
+              </Link>
+              <Link to="/">
+                <button
+                  className="boutton-end-quizz"
+                  type="button"
+                  onClick={() => setChapter(chapter + 1)}
+                >
+                  Accueil
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
       );
     }
 
     return (
-      <div>
-        Vous avez obtenu : {points} points... Le fugitif s'est enfui.
-        <Link reloadDocument to={`/quizz/${chapter}`}>
-          <button type="button">Recommencer</button>
-        </Link>
-        <Link to="/">
-          <button type="button">Retourner à l'accueil</button>
-        </Link>
-      </div>
+      <main className="main-end-chapter">
+        <div className="end-chapter-quizz">
+          <div>
+            <h2 className="number-points">
+              Vous avez obtenu : {points} points...
+            </h2>
+            <p className="game-status">Le fugitif s'est enfui.</p>
+          </div>
+          <div>
+            <Link reloadDocument to={`/quizz/${chapter}`}>
+              <button className="boutton-end-quizz" type="button">
+                Recommencer
+              </button>
+            </Link>
+            <Link to="/">
+              <button className="boutton-end-quizz" type="button">
+                Accueil
+              </button>
+            </Link>
+          </div>
+        </div>
+      </main>
     );
   }
 
