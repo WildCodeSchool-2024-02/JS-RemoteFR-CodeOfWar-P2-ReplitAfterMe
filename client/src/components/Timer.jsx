@@ -18,7 +18,7 @@ export default function Timer({
   const [endTimer, setEndTimer] = useState("time");
 
   useEffect(() => {
-    if (seconds <= 5) {
+    if (seconds <= 7) {
       setEndTimer("time end-time");
     } else {
       setEndTimer("time");
@@ -57,7 +57,7 @@ export default function Timer({
 
   return (
     <div className="timer">
-      <div className={endTimer}>{seconds}</div>
+      <div className={endTimer}>{seconds - 2}</div>
     </div>
   );
 }

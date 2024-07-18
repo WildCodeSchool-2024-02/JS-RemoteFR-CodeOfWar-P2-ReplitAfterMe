@@ -16,11 +16,11 @@ export default function DifficultyProvider({ children }) {
 
   const difficultyValue = useCallback(() => {
     if (difficulty === "Facile") {
-      setSeconds(20);
+      setSeconds(22);
     } else if (difficulty === "Moyen") {
-      setSeconds(15);
+      setSeconds(17);
     } else if (difficulty === "Difficile") {
-      setSeconds(10);
+      setSeconds(12);
     }
   }, [difficulty, setSeconds]);
 
