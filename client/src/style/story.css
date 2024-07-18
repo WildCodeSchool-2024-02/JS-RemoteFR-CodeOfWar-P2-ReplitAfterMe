@@ -2,6 +2,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+.storySection {
   display: flex;
   flex-direction: column;
   background-color: rgba(2, 2, 2, 0.805);

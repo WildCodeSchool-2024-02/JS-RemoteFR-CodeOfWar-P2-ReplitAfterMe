@@ -5,17 +5,17 @@
 }
 
 .question > img {
-  width: 90vw;
+  width: 90%;
 }
 
 .question > p {
   background-color: var(--white-color);
   padding: 1rem;
-  width: 90vw;
+  width: 90%;
   border-radius: 0.5rem;
   font-family: var(--thirty-font);
   font-size: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border: solid 1px var(--dark-color);
 }
 

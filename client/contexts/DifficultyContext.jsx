@@ -16,9 +16,9 @@ export default function DifficultyProvider({ children }) {
 
   const difficultyValue = useCallback(() => {
     if (difficulty === "Facile") {
-      setSeconds(30);
-    } else if (difficulty === "Moyen") {
       setSeconds(20);
+    } else if (difficulty === "Moyen") {
+      setSeconds(15);
     } else if (difficulty === "Difficile") {
       setSeconds(10);
     }
