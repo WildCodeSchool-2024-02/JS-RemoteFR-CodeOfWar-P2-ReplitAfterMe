@@ -104,34 +104,49 @@ function Quizz() {
 
   if (!data) {
     return (
-      <div>
-        L'enquête touche à sa fin... avez-vous été assez assidu dans votre
-        enquête ?
-        <Link to="/">
-          <button type="button">
-            {" "}
-            Chercher des indices dans la page Histoire
-          </button>
-        </Link>
-        <label htmlFor="coupable">je pense qu'il s'agit de :</label>{" "}
-        <input
-          type="text"
-          id="coupable"
-          name="coupable"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button type="button" onClick={handleCoupableClick}>
-          Envoyer
-        </button>
-        <p>{message}</p>
-        <div className={display}>
-          <img src={Kpes} alt="Le dangereux meurtrier muni d'une perruque" />
+      <main className="main-end-chapter">
+        <div className="mystery">
+          <h3 className="title-end-screen">
+            L'enquête touche à sa fin... Alors, qui est le coupable ?
+          </h3>
           <Link to="/">
-            <button type="button">Retourner au menu</button>
+            <button className="boutton-end-quizz" type="button">
+              {" "}
+              Chercher des indices
+            </button>
           </Link>
+          <label htmlFor="coupable">
+            <p className="game-status">je pense qu'il s'agit de :</p>
+          </label>{" "}
+          <input
+            type="text"
+            id="coupable"
+            name="coupable"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button
+            className="boutton-end-quizz"
+            type="button"
+            onClick={handleCoupableClick}
+          >
+            Envoyer
+          </button>
+          <p className="game-status">{message}</p>
+          <div className={display}>
+            <img
+              className="killer"
+              src={Kpes}
+              alt="Le dangereux meurtrier muni d'une perruque"
+            />
+            <Link to="/">
+              <button className="boutton-end-quizz" type="button">
+                Retourner au menu
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 

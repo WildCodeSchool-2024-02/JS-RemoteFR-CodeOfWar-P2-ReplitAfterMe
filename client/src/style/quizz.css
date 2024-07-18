@@ -46,6 +46,10 @@
 }
 .last {
   display: flex;
+  flex-direction: column;
+}
+.killer {
+  width: 200px;
 }
 
 .main-end-chapter {
@@ -94,7 +98,7 @@
   font-family: var(--primary-font);
   font-weight: bold;
   padding: 1rem;
-  margin: 2rem;
+  margin: 0rem;
   border-radius: 1rem;
   border: 0.5px solid var(--dark-color);
   box-shadow: 8px 8px 8px #ffbb334f;
@@ -104,4 +108,24 @@
 
 .boutton-end-quizz:hover {
   cursor: pointer;
+}
+
+.title-end-screen {
+  font-size: 1.8rem;
+  margin: 0rem 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+input {
+  margin: 1rem;
+  width: 80%;
+  padding: 12px 20px;
+  background-color: var(--white-color);
+}
+
+.mystery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
