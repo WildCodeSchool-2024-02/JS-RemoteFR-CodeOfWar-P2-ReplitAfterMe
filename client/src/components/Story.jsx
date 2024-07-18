@@ -26,7 +26,10 @@ export default function Story() {
     <section className="story-container">
       <div className="story-wrapper">
         <RainStory />
-        <div dangerouslySetInnerHTML={{ __html: story[chapter - 1].text }} />
+        <div
+          className="story-text-chapter"
+          dangerouslySetInnerHTML={{ __html: story[chapter - 1].text }}
+        />
         <Link to={`/quizz/${chapter}`}>
           <button className="next-quizz" type="button">
             Continuer Quizz
