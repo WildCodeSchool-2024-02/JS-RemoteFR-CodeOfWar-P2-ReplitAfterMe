@@ -34,7 +34,9 @@ export default function Question({
           src="https://www.ericgamble.com/wp-content/uploads/2020/06/View-from-Willis-Tower-Skydeck-Chicago-United-States.jpg"
           alt="ville remplie de grattes-ciel avec la mer en arrière plan"
         />
-        <p>De quel pays {dataFlags} est la capitale ?</p>
+        <p>
+          De quel pays <span>{dataFlags}</span> est la capitale ?
+        </p>
       </div>
       <div className="chapitre">
         <p>

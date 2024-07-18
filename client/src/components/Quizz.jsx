@@ -26,7 +26,7 @@ function Quizz() {
   const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
-  const { chapter, setChapter } = useContext(ChapterContext);
+  const { chapter } = useContext(ChapterContext);
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
@@ -104,64 +104,93 @@ function Quizz() {
 
   if (!data) {
     return (
-      <div>
-        L'enquête touche à sa fin... avez-vous été assez assidu dans votre
-        enquête ?
-        <Link to="/">
-          <button type="button">
-            {" "}
-            Chercher des indices dans la page Histoire
-          </button>
-        </Link>
-        <label htmlFor="coupable">je pense qu'il s'agit de :</label>{" "}
-        <input
-          type="text"
-          id="coupable"
-          name="coupable"
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button type="button" onClick={handleCoupableClick}>
-          Envoyer
-        </button>
-        <p>{message}</p>
-        <div className={display}>
-          <img src={Kpes} alt="Le dangereux meurtrier muni d'une perruque" />
+      <main className="main-end-chapter">
+        <div className="mystery">
+          <h3 className="title-end-screen">
+            L'enquête touche à sa fin... Alors, qui est le coupable ?
+          </h3>
           <Link to="/">
-            <button type="button">Retourner au menu</button>
+            <button className="boutton-end-quizz" type="button">
+              {" "}
+              Chercher des indices
+            </button>
           </Link>
+          <label htmlFor="coupable">
+            <p className="game-status">je pense qu'il s'agit de :</p>
+          </label>{" "}
+          <input
+            type="text"
+            id="coupable"
+            name="coupable"
+            value={inputValue}
+            onChange={handleInputChange}
+          />
+          <button
+            className="boutton-end-quizz"
+            type="button"
+            onClick={handleCoupableClick}
+          >
+            Envoyer
+          </button>
+          <p className="game-status">{message}</p>
+          <div className={display}>
+            <img
+              className="killer"
+              src={Kpes}
+              alt="Le dangereux meurtrier muni d'une perruque"
+            />
+            <Link to="/">
+              <button className="boutton-end-quizz" type="button">
+                Retourner au menu
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </main>
     );
   }
 
   if (numQuestion >= maxQuestions) {
     if (points >= 5000) {
       return (
-        <div>
-          Vous avez obtenu : {points} points ! Le fugitif est tout proche...
-          <Link to="/story">
-            <button type="button">Chapitre suivant</button>
-          </Link>
-          <Link to="/">
-            <button type="button" onClick={() => setChapter(chapter + 1)}>
-              Retourner à l'accueil
-            </button>
-          </Link>
-        </div>
+        <main className="main-end-chapter">
+          <div className="end-chapter-quizz">
+            <div>
+              <h2 className="number-points">
+                Vous avez obtenu : {points} points !
+              </h2>
+              <p className="game-status"> Le fugitif est tout proche...</p>
+            </div>
+            <div>
+              <Link to="/story">
+                <button className="boutton-end-quizz" type="button">
+                  Chapitre suivant
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
       );
     }
 
     return (
-      <div>
-        Vous avez obtenu : {points} points... Le fugitif s'est enfui.
-        <Link reloadDocument to={`/quizz/${chapter}`}>
-          <button type="button">Recommencer</button>
-        </Link>
-        <Link to="/">
-          <button type="button">Retourner à l'accueil</button>
-        </Link>
-      </div>
+      <main className="main-end-chapter">
+        <div className="end-chapter-quizz">
+          <div>
+            <h2 className="number-points">
+              Vous avez obtenu : {points} points...
+            </h2>
+            <p className="game-status">Le fugitif s'est enfui.</p>
+          </div>
+          <div>
+            <Link to="/">
+              <button className="boutton-end-quizz" type="button">
+                Accueil
+              </button>
+            </Link>
+          </div>
+        </div>
+      </main>
     );
   }
 

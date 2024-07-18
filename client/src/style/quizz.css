@@ -6,6 +6,7 @@
   justify-content: space-around;
   min-width: 375px;
   max-width: 430px;
+  max-height: 900px;
 }
 
 .header {
@@ -37,6 +38,7 @@
   height: 100vh;
   object-fit: cover;
   max-width: 430px;
+  max-height: 900px;
 }
 
 .last-none {
@@ -44,4 +46,86 @@
 }
 .last {
   display: flex;
+  flex-direction: column;
+}
+.killer {
+  width: 200px;
+}
+
+.main-end-chapter {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+    225deg,
+    #b2f4fe 0,
+    #8fe5f7 16.67%,
+    #63d4f2 33.33%,
+    #0cc1ed 50%,
+    #00aee9 66.67%,
+    #009ce6 83.33%,
+    #008be3 100%
+  );
+  max-height: 900px;
+}
+
+.end-chapter-quizz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.end-chapter-quizz > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-points {
+  font-size: 2rem;
+  width: 18ch;
+  margin: 2rem;
+}
+
+.game-status {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.boutton-end-quizz {
+  font-size: 1.5rem;
+  font-family: var(--primary-font);
+  font-weight: bold;
+  padding: 1rem;
+  margin: 0rem;
+  border-radius: 1rem;
+  border: 0.5px solid var(--dark-color);
+  box-shadow: 8px 8px 8px #ffbb334f;
+  transition: all 0.3s ease;
+  width: 280px;
+}
+
+.boutton-end-quizz:hover {
+  cursor: pointer;
+}
+
+.title-end-screen {
+  font-size: 1.8rem;
+  margin: 0rem 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+input {
+  margin: 1rem;
+  width: 80%;
+  padding: 12px 20px;
+  background-color: var(--white-color);
+}
+
+.mystery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
