@@ -15,6 +15,7 @@ import Atout from "./Atout";
 import Timer from "./Timer";
 import AnswerButton from "./AnswerButton";
 import PopUp from "./PopUp";
+import PopUpNextQuestion from "./PopUpNextQuestion";
 
 function Quizz() {
   const [points, setPoints] = useState(0);
@@ -24,16 +25,22 @@ function Quizz() {
   const { seconds, setSeconds } = useDifficulty();
   const [bonus, setBonus] = useState(0);
   const [popUP, setPopUp] = useState(false);
+  const [timerOut, setTimerOut] = useState(false);
   const { chapter, setChapter } = useContext(ChapterContext);
   const [disable, setDisable] = useState(false);
   const [answerClass, setAnswerClass] = useState("button");
   const [randomAnswer, setRandomAnswer] = useState(null);
+  const [isActive, setIsActive] = useState(true);
 
   const data = useLoaderData();
   const maxQuestions = 10;
 
   const togglePopup = () => {
     setPopUp(!popUP);
+  };
+
+  const toggleTimerOut = () => {
+    setTimerOut(!timerOut);
   };
 
   const secondsRef = useRef(seconds);
@@ -95,7 +102,7 @@ function Quizz() {
         </div>
       );
     }
-
+    console.info(numQuestion);
     return (
       <div>
         Vous avez obtenu : {points} points... Le fugitif s'est enfui.
@@ -138,7 +145,21 @@ function Quizz() {
           setQuestion={setQuestion}
           setNumQuestion={setNumQuestion}
           numQuestion={numQuestion}
+          toggleTimerOut={toggleTimerOut}
+          isActive={isActive}
+          setIsActive={setIsActive}
+          timerOut={timerOut}
         />
+        {timerOut && (
+          <PopUpNextQuestion
+            goodAnswer={goodAnswer.translations.fra.common}
+            setQuestion={setQuestion}
+            toggleTimerOut={toggleTimerOut}
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
+        )}
+
         <div className="answer-div">
           {answerArray.map((country) => (
             <AnswerButton
