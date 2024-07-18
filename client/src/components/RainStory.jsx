@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "../style/rainStory.css";
 
-export default function RainEffect() {
+export default function RainStory() {
   useEffect(() => {
     function rain() {
       const cloud = document.querySelector(".rain-cloud");
