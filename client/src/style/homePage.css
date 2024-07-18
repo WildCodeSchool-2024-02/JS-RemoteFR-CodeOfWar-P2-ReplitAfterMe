@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
   max-width: 430px;
+  max-height: 900px;
 }
 
 .titleHome,

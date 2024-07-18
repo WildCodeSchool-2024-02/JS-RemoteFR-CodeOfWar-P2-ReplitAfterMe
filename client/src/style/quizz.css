@@ -92,6 +92,7 @@
 .boutton-end-quizz {
   font-size: 1.5rem;
   font-family: var(--primary-font);
+  font-weight: bold;
   padding: 1rem;
   margin: 2rem;
   border-radius: 1rem;
