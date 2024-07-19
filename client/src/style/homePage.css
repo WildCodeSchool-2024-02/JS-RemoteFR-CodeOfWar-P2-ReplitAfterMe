@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-container {
+  background-color: var(--primary-color);
+  background: url(../assets/images/plane.png) no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: top;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 430px;
+  max-height: 932px;
+}
+
+.titleHome,
+.links {
+  color: #0d0c0c;
+  text-align: center;
+  list-style: none;
+}
+.titleHome > h1 {
+  font-size: 3rem;
+  color: var(--dark-color);
+  padding-top: 1rem;
+}
+
+.linksContainer {
+  bottom: 0px;
+  left: 50%;
+  list-style: none;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--primary-font);
+}
+
+a {
+  color: #0d0c0c;
+  text-decoration: none;
+}
+
+.play {
+  font-size: 4.5rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 4rem;
+}
+
+.linksHome {
+  font-size: 2.5rem;
+}
+
+ul > .option > li {
+  margin-top: 4rem;
+}
