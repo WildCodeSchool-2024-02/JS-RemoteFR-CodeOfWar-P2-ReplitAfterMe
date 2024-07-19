@@ -122,8 +122,9 @@
 .playGame {
   font-size: 1.5rem;
   padding: 1.5rem;
-  background-color: black;
+  background-color: #6a8ba6;
   border-radius: 8px;
   color: #ede6e6d4;
+  box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.75);
   text-transform: uppercase;
 }

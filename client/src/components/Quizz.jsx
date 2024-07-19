@@ -101,11 +101,13 @@ function Quizz() {
     const lowerInputValue = inputValue.toLocaleLowerCase();
     if (lowerInputValue === "kevin" || lowerInputValue === "kevin peset") {
       setMessage(
-        "Le meurtrier est enfin sous les verrous ! Bravo ! J'espère que tu as apprécié le voyage !"
+        'Félicitations "User.name" , le meurtrier est neutralisé ! Merci pour ton aide..'
       );
       setDisplay("last");
     } else {
-      setMessage("Perdu, relie l'histoire");
+      setMessage(
+        "Echec, l'identité du suspect reste un mystère... recommence l'histoire "
+      );
     }
   };
 
@@ -113,9 +115,7 @@ function Quizz() {
     return (
       <main className="main-end-chapter">
         <div className="mystery">
-          <h3 className="title-end-screen">
-            L'enquête touche à sa fin... Alors, qui est le coupable ?
-          </h3>
+          <h3 className="title-end-screen">L'enquête touche à sa fin...</h3>
           <Link to="/">
             <button className="boutton-end-quizz" type="button">
               {" "}
@@ -123,7 +123,10 @@ function Quizz() {
             </button>
           </Link>
           <label htmlFor="coupable">
-            <p className="game-status">je pense qu'il s'agit de :</p>
+            <p className="game-status">
+              "User.name" suit son intuition et pense avoir trouver l'identité
+              du meurtrier :
+            </p>
           </label>{" "}
           <input
             className="input-text"
